@@ -1,0 +1,1306 @@
+/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# ** Error (suppressible): (vdel-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'work' is missing or is not a valid QuestaSim library.
+# 1
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:46 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint systolic_array.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module systolic_pe
+# -- Compiling module systolic_array
+# 
+# Top level modules:
+# 	systolic_array
+# End time: 17:25:47 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:47 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint systolic_array_pkg.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling package systolic_array_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) systolic_array_pkg.sv(3): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:47 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:47 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint top.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling module top
+# -- Importing package systolic_array_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# 
+# Top level modules:
+# 	top
+# End time: 17:25:48 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:48 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint test.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) test.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package test_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:48 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:48 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint driver.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) driver.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package driver_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:49 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:49 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint environment.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) environment.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package environment_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:50 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:50 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint systolic_array_bfm.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Compiling interface systolic_array_bfm
+# -- Importing package systolic_array_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:50 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:50 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint agent.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) agent.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package agent_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:51 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:51 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint scoreboard.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) scoreboard.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package scoreboard_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:51 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:51 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint sequence.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) sequence.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package sequence_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:52 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:52 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint sequencer.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) sequencer.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package sequencer_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:53 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:53 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint coverage.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) coverage.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package coverage_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:53 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:53 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vlog -source -lint monitor.sv 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# ** Note: (vlog-2286) monitor.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package monitor_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package systolic_array_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 17:25:54 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 17:25:54 on Jun 30,2026
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vopt top -o top_optimized "+acc" "+cover=sbfec+systolic_array(rtl)." 
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package systolic_array_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Loading package mtiUvm.questa_uvm_pkg
+# -- Loading interface systolic_array_bfm
+# -- Loading module systolic_array
+# -- Loading module systolic_pe
+# Optimizing 8 design-units (inlining 0/19 module instances):
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# -- Optimizing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)(fast)
+# -- Optimizing package mtiUvm.questa_uvm_pkg(fast)
+# -- Optimizing package systolic_array_pkg(fast)
+# -- Optimizing module systolic_array(fast)
+# -- Optimizing module systolic_pe(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing interface systolic_array_bfm(fast__2)
+# -- Optimizing interface systolic_array_bfm(fast)
+# Optimized design name is top_optimized
+# End time: 17:25:57 on Jun 30,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0
+sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# vsim top_optimized -coverage 
+# Start time: 17:25:57 on Jun 30,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.systolic_array_bfm(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.systolic_array_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.top(fast)
+# Loading work.systolic_array_bfm(fast__2)
+# Loading work.systolic_array(fast)
+# Loading work.systolic_pe(fast)
+# Loading /pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/linux_x86_64/uvm_dpi.so
+# 1
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test systolic_array_test...
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# ------------------------------------------------------------------
+# Name                       Type                        Size  Value
+# ------------------------------------------------------------------
+# uvm_test_top               systolic_array_test         -     @471 
+#   environment_h            systolic_array_environment  -     @478 
+#     agent_h                systolic_array_agent        -     @485 
+#       driver_h             systolic_array_driver       -     @635 
+#         rsp_port           uvm_analysis_port           -     @650 
+#         seq_item_port      uvm_seq_item_pull_port      -     @642 
+#       monitor_h            systolic_array_monitor      -     @628 
+#         monitor_port       uvm_analysis_port           -     @660 
+#       sequencer_h          systolic_array_sequencer    -     @519 
+#         rsp_export         uvm_analysis_export         -     @526 
+#         seq_item_export    uvm_seq_item_pull_imp       -     @620 
+#         arbitration_queue  array                       0     -    
+#         lock_queue         array                       0     -    
+#         num_last_reqs      integral                    32    'd1  
+#         num_last_rsps      integral                    32    'd1  
+#     coverage_h             systolic_array_coverage     -     @499 
+#       analysis_imp         uvm_analysis_imp            -     @506 
+#     scoreboard_h           systolic_array_scoreboard   -     @492 
+#       scoreboard_port      uvm_analysis_imp_port       -     @673 
+# ------------------------------------------------------------------
+# 
+# UVM_INFO sequence.sv(71) @ 0: uvm_test_top.environment_h.agent_h.sequencer_h@@sequence_h [SYSTOLIC_SEQ] Starting directed and random matrix sequence
+# UVM_INFO scoreboard.sv(107) @ 155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=ZERO latency=9 c00=0 c33=0
+# UVM_INFO scoreboard.sv(107) @ 275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=IDENTITY latency=9 c00=-7 c33=8
+# UVM_INFO scoreboard.sv(107) @ 395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=SIGNED_CORNERS latency=9 c00=769 c33=12239
+# UVM_INFO scoreboard.sv(107) @ 515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=ALTERNATING latency=9 c00=-14 c33=-14
+# UVM_INFO scoreboard.sv(107) @ 635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-14 c33=61
+# UVM_INFO scoreboard.sv(107) @ 755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=56 c33=6
+# UVM_INFO scoreboard.sv(107) @ 875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=1 c33=30
+# UVM_INFO scoreboard.sv(107) @ 995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=16 c33=-17
+# UVM_INFO scoreboard.sv(107) @ 1115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-102 c33=-48
+# UVM_INFO scoreboard.sv(107) @ 1235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=35 c33=-40
+# UVM_INFO scoreboard.sv(107) @ 1355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-64 c33=0
+# UVM_INFO scoreboard.sv(107) @ 1475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=62 c33=9
+# UVM_INFO scoreboard.sv(107) @ 1595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=88 c33=18
+# UVM_INFO scoreboard.sv(107) @ 1715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-49 c33=32
+# UVM_INFO scoreboard.sv(107) @ 1835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-9 c33=-57
+# UVM_INFO scoreboard.sv(107) @ 1955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-38 c33=8
+# UVM_INFO scoreboard.sv(107) @ 2075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=30 c33=68
+# UVM_INFO scoreboard.sv(107) @ 2195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-32 c33=4
+# UVM_INFO scoreboard.sv(107) @ 2315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-8 c33=5
+# UVM_INFO scoreboard.sv(107) @ 2435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=36 c33=-18
+# UVM_INFO scoreboard.sv(107) @ 2555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=47 c33=-52
+# UVM_INFO scoreboard.sv(107) @ 2675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=14 c33=-16
+# UVM_INFO scoreboard.sv(107) @ 2795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=54 c33=-28
+# UVM_INFO scoreboard.sv(107) @ 2915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=72 c33=-19
+# UVM_INFO scoreboard.sv(107) @ 3035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=36 c33=10
+# UVM_INFO scoreboard.sv(107) @ 3155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-19 c33=-24
+# UVM_INFO scoreboard.sv(107) @ 3275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-30 c33=36
+# UVM_INFO scoreboard.sv(107) @ 3395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-10 c33=-20
+# UVM_INFO scoreboard.sv(107) @ 3515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-65 c33=-39
+# UVM_INFO scoreboard.sv(107) @ 3635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=33 c33=-29
+# UVM_INFO scoreboard.sv(107) @ 3755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=59 c33=-72
+# UVM_INFO scoreboard.sv(107) @ 3875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-21 c33=-21
+# UVM_INFO scoreboard.sv(107) @ 3995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-70 c33=37
+# UVM_INFO scoreboard.sv(107) @ 4115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=53 c33=74
+# UVM_INFO scoreboard.sv(107) @ 4235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=10 c33=-56
+# UVM_INFO scoreboard.sv(107) @ 4355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=68 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 4475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=76 c33=-49
+# UVM_INFO scoreboard.sv(107) @ 4595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=22 c33=-8
+# UVM_INFO scoreboard.sv(107) @ 4715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=112 c33=42
+# UVM_INFO scoreboard.sv(107) @ 4835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=32 c33=34
+# UVM_INFO scoreboard.sv(107) @ 4955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=72 c33=-21
+# UVM_INFO scoreboard.sv(107) @ 5075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=107 c33=16
+# UVM_INFO scoreboard.sv(107) @ 5195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=13 c33=87
+# UVM_INFO scoreboard.sv(107) @ 5315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=13 c33=-65
+# UVM_INFO scoreboard.sv(107) @ 5435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-53 c33=80
+# UVM_INFO scoreboard.sv(107) @ 5555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-7 c33=6
+# UVM_INFO scoreboard.sv(107) @ 5675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-50 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 5795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-34 c33=32
+# UVM_INFO scoreboard.sv(107) @ 5915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=-73
+# UVM_INFO scoreboard.sv(107) @ 6035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=4 c33=60
+# UVM_INFO scoreboard.sv(107) @ 6155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-49 c33=19
+# UVM_INFO scoreboard.sv(107) @ 6275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-6 c33=-24
+# UVM_INFO scoreboard.sv(107) @ 6395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-39 c33=16
+# UVM_INFO scoreboard.sv(107) @ 6515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-18 c33=17
+# UVM_INFO scoreboard.sv(107) @ 6635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-91 c33=106
+# UVM_INFO scoreboard.sv(107) @ 6755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=55
+# UVM_INFO scoreboard.sv(107) @ 6875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=18 c33=-22
+# UVM_INFO scoreboard.sv(107) @ 6995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 7115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=42 c33=10
+# UVM_INFO scoreboard.sv(107) @ 7235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=28 c33=54
+# UVM_INFO scoreboard.sv(107) @ 7355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=7 c33=-48
+# UVM_INFO scoreboard.sv(107) @ 7475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-54 c33=101
+# UVM_INFO scoreboard.sv(107) @ 7595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-11 c33=-14
+# UVM_INFO scoreboard.sv(107) @ 7715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-7 c33=35
+# UVM_INFO scoreboard.sv(107) @ 7835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=4 c33=-35
+# UVM_INFO scoreboard.sv(107) @ 7955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-73 c33=16
+# UVM_INFO scoreboard.sv(107) @ 8075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=15 c33=32
+# UVM_INFO scoreboard.sv(107) @ 8195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=20 c33=-25
+# UVM_INFO scoreboard.sv(107) @ 8315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-31 c33=-23
+# UVM_INFO scoreboard.sv(107) @ 8435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=19 c33=58
+# UVM_INFO scoreboard.sv(107) @ 8555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=38 c33=-35
+# UVM_INFO scoreboard.sv(107) @ 8675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-14 c33=0
+# UVM_INFO scoreboard.sv(107) @ 8795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=2 c33=50
+# UVM_INFO scoreboard.sv(107) @ 8915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-54 c33=-21
+# UVM_INFO scoreboard.sv(107) @ 9035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=75 c33=6
+# UVM_INFO scoreboard.sv(107) @ 9155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-49 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 9275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=32 c33=-35
+# UVM_INFO scoreboard.sv(107) @ 9395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=24 c33=-23
+# UVM_INFO scoreboard.sv(107) @ 9515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=37 c33=23
+# UVM_INFO scoreboard.sv(107) @ 9635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=19 c33=47
+# UVM_INFO scoreboard.sv(107) @ 9755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=-36
+# UVM_INFO scoreboard.sv(107) @ 9875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-48 c33=-16
+# UVM_INFO scoreboard.sv(107) @ 9995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=66 c33=49
+# UVM_INFO scoreboard.sv(107) @ 10115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=33 c33=-45
+# UVM_INFO scoreboard.sv(107) @ 10235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=33 c33=-5
+# UVM_INFO scoreboard.sv(107) @ 10355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=38 c33=-94
+# UVM_INFO scoreboard.sv(107) @ 10475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-36 c33=4
+# UVM_INFO scoreboard.sv(107) @ 10595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-26 c33=-24
+# UVM_INFO scoreboard.sv(107) @ 10715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-16 c33=-60
+# UVM_INFO scoreboard.sv(107) @ 10835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=34 c33=108
+# UVM_INFO scoreboard.sv(107) @ 10955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-60 c33=85
+# UVM_INFO scoreboard.sv(107) @ 11075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-34 c33=-41
+# UVM_INFO scoreboard.sv(107) @ 11195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-36 c33=-25
+# UVM_INFO scoreboard.sv(107) @ 11315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-50 c33=44
+# UVM_INFO scoreboard.sv(107) @ 11435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-12 c33=35
+# UVM_INFO scoreboard.sv(107) @ 11555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-28 c33=-41
+# UVM_INFO scoreboard.sv(107) @ 11675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=80 c33=28
+# UVM_INFO scoreboard.sv(107) @ 11795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=14 c33=-30
+# UVM_INFO scoreboard.sv(107) @ 11915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=11 c33=-38
+# UVM_INFO scoreboard.sv(107) @ 12035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=24 c33=-117
+# UVM_INFO scoreboard.sv(107) @ 12155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=9 c33=-54
+# UVM_INFO scoreboard.sv(107) @ 12275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=43 c33=-18
+# UVM_INFO scoreboard.sv(107) @ 12395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-16 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 12515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-62 c33=36
+# UVM_INFO scoreboard.sv(107) @ 12635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=50 c33=-71
+# UVM_INFO scoreboard.sv(107) @ 12755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-23 c33=52
+# UVM_INFO scoreboard.sv(107) @ 12875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=52 c33=-9
+# UVM_INFO scoreboard.sv(107) @ 12995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-128 c33=15
+# UVM_INFO scoreboard.sv(107) @ 13115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-1 c33=35
+# UVM_INFO scoreboard.sv(107) @ 13235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-49 c33=52
+# UVM_INFO scoreboard.sv(107) @ 13355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=88 c33=-2
+# UVM_INFO scoreboard.sv(107) @ 13475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-35 c33=35
+# UVM_INFO scoreboard.sv(107) @ 13595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-24 c33=3
+# UVM_INFO scoreboard.sv(107) @ 13715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=22 c33=-32
+# UVM_INFO scoreboard.sv(107) @ 13835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-1 c33=40
+# UVM_INFO scoreboard.sv(107) @ 13955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-37 c33=57
+# UVM_INFO scoreboard.sv(107) @ 14075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-34 c33=95
+# UVM_INFO scoreboard.sv(107) @ 14195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=-22
+# UVM_INFO scoreboard.sv(107) @ 14315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=14 c33=52
+# UVM_INFO scoreboard.sv(107) @ 14435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-64 c33=-3
+# UVM_INFO scoreboard.sv(107) @ 14555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=42 c33=6
+# UVM_INFO scoreboard.sv(107) @ 14675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-8 c33=-62
+# UVM_INFO scoreboard.sv(107) @ 14795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=25 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 14915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=40 c33=-26
+# UVM_INFO scoreboard.sv(107) @ 15035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-15 c33=0
+# UVM_INFO scoreboard.sv(107) @ 15155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-17 c33=40
+# UVM_INFO scoreboard.sv(107) @ 15275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=58 c33=36
+# UVM_INFO scoreboard.sv(107) @ 15395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=5 c33=75
+# UVM_INFO scoreboard.sv(107) @ 15515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-21 c33=28
+# UVM_INFO scoreboard.sv(107) @ 15635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=56 c33=-96
+# UVM_INFO scoreboard.sv(107) @ 15755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-8 c33=24
+# UVM_INFO scoreboard.sv(107) @ 15875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=32 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 15995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-85 c33=-75
+# UVM_INFO scoreboard.sv(107) @ 16115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-9 c33=-76
+# UVM_INFO scoreboard.sv(107) @ 16235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-41 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 16355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=103 c33=82
+# UVM_INFO scoreboard.sv(107) @ 16475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=10 c33=82
+# UVM_INFO scoreboard.sv(107) @ 16595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=2 c33=-14
+# UVM_INFO scoreboard.sv(107) @ 16715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=81 c33=-57
+# UVM_INFO scoreboard.sv(107) @ 16835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=26 c33=-25
+# UVM_INFO scoreboard.sv(107) @ 16955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-32 c33=-117
+# UVM_INFO scoreboard.sv(107) @ 17075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=5 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 17195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-1 c33=18
+# UVM_INFO scoreboard.sv(107) @ 17315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=10 c33=-73
+# UVM_INFO scoreboard.sv(107) @ 17435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=24 c33=7
+# UVM_INFO scoreboard.sv(107) @ 17555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=21 c33=-29
+# UVM_INFO scoreboard.sv(107) @ 17675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=6 c33=33
+# UVM_INFO scoreboard.sv(107) @ 17795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-49 c33=51
+# UVM_INFO scoreboard.sv(107) @ 17915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-76 c33=-54
+# UVM_INFO scoreboard.sv(107) @ 18035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=112 c33=-110
+# UVM_INFO scoreboard.sv(107) @ 18155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=59 c33=34
+# UVM_INFO scoreboard.sv(107) @ 18275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=14 c33=-64
+# UVM_INFO scoreboard.sv(107) @ 18395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=43 c33=31
+# UVM_INFO scoreboard.sv(107) @ 18515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-20 c33=-55
+# UVM_INFO scoreboard.sv(107) @ 18635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-4 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 18755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-28 c33=83
+# UVM_INFO scoreboard.sv(107) @ 18875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=62 c33=-60
+# UVM_INFO scoreboard.sv(107) @ 18995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-52 c33=-46
+# UVM_INFO scoreboard.sv(107) @ 19115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-32 c33=-38
+# UVM_INFO scoreboard.sv(107) @ 19235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=34 c33=-61
+# UVM_INFO scoreboard.sv(107) @ 19355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=80 c33=-4
+# UVM_INFO scoreboard.sv(107) @ 19475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-10 c33=-115
+# UVM_INFO scoreboard.sv(107) @ 19595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=130 c33=-37
+# UVM_INFO scoreboard.sv(107) @ 19715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-42 c33=-23
+# UVM_INFO scoreboard.sv(107) @ 19835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-55 c33=-31
+# UVM_INFO scoreboard.sv(107) @ 19955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-34 c33=-15
+# UVM_INFO scoreboard.sv(107) @ 20075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-37 c33=-33
+# UVM_INFO scoreboard.sv(107) @ 20195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-65 c33=11
+# UVM_INFO scoreboard.sv(107) @ 20315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=1 c33=-110
+# UVM_INFO scoreboard.sv(107) @ 20435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-8 c33=64
+# UVM_INFO scoreboard.sv(107) @ 20555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=11 c33=26
+# UVM_INFO scoreboard.sv(107) @ 20675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=41 c33=0
+# UVM_INFO scoreboard.sv(107) @ 20795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=24 c33=12
+# UVM_INFO scoreboard.sv(107) @ 20915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=21 c33=63
+# UVM_INFO scoreboard.sv(107) @ 21035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=16 c33=-6
+# UVM_INFO scoreboard.sv(107) @ 21155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=6
+# UVM_INFO scoreboard.sv(107) @ 21275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-48 c33=-36
+# UVM_INFO scoreboard.sv(107) @ 21395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-63 c33=-32
+# UVM_INFO scoreboard.sv(107) @ 21515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-14 c33=-30
+# UVM_INFO scoreboard.sv(107) @ 21635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-13 c33=21
+# UVM_INFO scoreboard.sv(107) @ 21755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=25 c33=42
+# UVM_INFO scoreboard.sv(107) @ 21875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-33 c33=2
+# UVM_INFO scoreboard.sv(107) @ 21995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-37 c33=-77
+# UVM_INFO scoreboard.sv(107) @ 22115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-27 c33=30
+# UVM_INFO scoreboard.sv(107) @ 22235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-21 c33=4
+# UVM_INFO scoreboard.sv(107) @ 22355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-4 c33=98
+# UVM_INFO scoreboard.sv(107) @ 22475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=-21
+# UVM_INFO scoreboard.sv(107) @ 22595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-48 c33=65
+# UVM_INFO scoreboard.sv(107) @ 22715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=1 c33=-111
+# UVM_INFO scoreboard.sv(107) @ 22835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-19 c33=4
+# UVM_INFO scoreboard.sv(107) @ 22955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-60 c33=-7
+# UVM_INFO scoreboard.sv(107) @ 23075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=73
+# UVM_INFO scoreboard.sv(107) @ 23195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=82 c33=-94
+# UVM_INFO scoreboard.sv(107) @ 23315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=37 c33=5
+# UVM_INFO scoreboard.sv(107) @ 23435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-77 c33=4
+# UVM_INFO scoreboard.sv(107) @ 23555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-78 c33=52
+# UVM_INFO scoreboard.sv(107) @ 23675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-73 c33=-90
+# UVM_INFO scoreboard.sv(107) @ 23795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-20 c33=6
+# UVM_INFO scoreboard.sv(107) @ 23915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=62 c33=-40
+# UVM_INFO scoreboard.sv(107) @ 24035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=62 c33=18
+# UVM_INFO scoreboard.sv(107) @ 24155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=39 c33=54
+# UVM_INFO scoreboard.sv(107) @ 24275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=13 c33=4
+# UVM_INFO scoreboard.sv(107) @ 24395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=24 c33=-37
+# UVM_INFO scoreboard.sv(107) @ 24515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=29 c33=-32
+# UVM_INFO scoreboard.sv(107) @ 24635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=12 c33=-62
+# UVM_INFO scoreboard.sv(107) @ 24755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=22 c33=11
+# UVM_INFO scoreboard.sv(107) @ 24875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=100 c33=59
+# UVM_INFO scoreboard.sv(107) @ 24995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=26 c33=-7
+# UVM_INFO scoreboard.sv(107) @ 25115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=58 c33=-17
+# UVM_INFO scoreboard.sv(107) @ 25235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=25 c33=0
+# UVM_INFO scoreboard.sv(107) @ 25355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-47 c33=28
+# UVM_INFO scoreboard.sv(107) @ 25475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-101 c33=-5
+# UVM_INFO scoreboard.sv(107) @ 25595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=38 c33=-41
+# UVM_INFO scoreboard.sv(107) @ 25715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-12 c33=51
+# UVM_INFO scoreboard.sv(107) @ 25835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-31 c33=-87
+# UVM_INFO scoreboard.sv(107) @ 25955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-54 c33=-7
+# UVM_INFO scoreboard.sv(107) @ 26075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=86 c33=-49
+# UVM_INFO scoreboard.sv(107) @ 26195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-35 c33=-16
+# UVM_INFO scoreboard.sv(107) @ 26315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-2 c33=-37
+# UVM_INFO scoreboard.sv(107) @ 26435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=98 c33=-5
+# UVM_INFO scoreboard.sv(107) @ 26555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=50 c33=-20
+# UVM_INFO scoreboard.sv(107) @ 26675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-52 c33=11
+# UVM_INFO scoreboard.sv(107) @ 26795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=84 c33=-86
+# UVM_INFO scoreboard.sv(107) @ 26915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=80 c33=25
+# UVM_INFO scoreboard.sv(107) @ 27035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=24
+# UVM_INFO scoreboard.sv(107) @ 27155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-78 c33=-86
+# UVM_INFO scoreboard.sv(107) @ 27275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-2 c33=-72
+# UVM_INFO scoreboard.sv(107) @ 27395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-23 c33=62
+# UVM_INFO scoreboard.sv(107) @ 27515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-13 c33=0
+# UVM_INFO scoreboard.sv(107) @ 27635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-33 c33=-54
+# UVM_INFO scoreboard.sv(107) @ 27755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-72 c33=-47
+# UVM_INFO scoreboard.sv(107) @ 27875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-50 c33=63
+# UVM_INFO scoreboard.sv(107) @ 27995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=54 c33=-44
+# UVM_INFO scoreboard.sv(107) @ 28115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=51
+# UVM_INFO scoreboard.sv(107) @ 28235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-10 c33=-20
+# UVM_INFO scoreboard.sv(107) @ 28355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=13 c33=-73
+# UVM_INFO scoreboard.sv(107) @ 28475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=38 c33=8
+# UVM_INFO scoreboard.sv(107) @ 28595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=80 c33=-7
+# UVM_INFO scoreboard.sv(107) @ 28715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-1 c33=9
+# UVM_INFO scoreboard.sv(107) @ 28835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-88 c33=57
+# UVM_INFO scoreboard.sv(107) @ 28955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-58 c33=-31
+# UVM_INFO scoreboard.sv(107) @ 29075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=24
+# UVM_INFO scoreboard.sv(107) @ 29195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-12 c33=-93
+# UVM_INFO scoreboard.sv(107) @ 29315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-20 c33=60
+# UVM_INFO scoreboard.sv(107) @ 29435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=71 c33=-17
+# UVM_INFO scoreboard.sv(107) @ 29555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-38 c33=-16
+# UVM_INFO scoreboard.sv(107) @ 29675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-32 c33=-39
+# UVM_INFO scoreboard.sv(107) @ 29795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=46 c33=-10
+# UVM_INFO scoreboard.sv(107) @ 29915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-6 c33=-35
+# UVM_INFO scoreboard.sv(107) @ 30035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=20 c33=-51
+# UVM_INFO scoreboard.sv(107) @ 30155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=10 c33=17
+# UVM_INFO scoreboard.sv(107) @ 30275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=45 c33=24
+# UVM_INFO scoreboard.sv(107) @ 30395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=48 c33=70
+# UVM_INFO scoreboard.sv(107) @ 30515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=2 c33=-26
+# UVM_INFO scoreboard.sv(107) @ 30635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=1 c33=-15
+# UVM_INFO scoreboard.sv(107) @ 30755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-37 c33=-60
+# UVM_INFO scoreboard.sv(107) @ 30875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-59 c33=33
+# UVM_INFO scoreboard.sv(107) @ 30995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-75 c33=-102
+# UVM_INFO scoreboard.sv(107) @ 31115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=57 c33=-11
+# UVM_INFO scoreboard.sv(107) @ 31235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-6 c33=37
+# UVM_INFO scoreboard.sv(107) @ 31355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-39 c33=35
+# UVM_INFO scoreboard.sv(107) @ 31475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-101 c33=-43
+# UVM_INFO scoreboard.sv(107) @ 31595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=36 c33=32
+# UVM_INFO scoreboard.sv(107) @ 31715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=10 c33=-5
+# UVM_INFO scoreboard.sv(107) @ 31835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=60 c33=7
+# UVM_INFO scoreboard.sv(107) @ 31955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-42 c33=-25
+# UVM_INFO scoreboard.sv(107) @ 32075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-39 c33=15
+# UVM_INFO scoreboard.sv(107) @ 32195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=94 c33=8
+# UVM_INFO scoreboard.sv(107) @ 32315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-62 c33=-34
+# UVM_INFO scoreboard.sv(107) @ 32435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=47 c33=3
+# UVM_INFO scoreboard.sv(107) @ 32555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=28 c33=-65
+# UVM_INFO scoreboard.sv(107) @ 32675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-8 c33=-1
+# UVM_INFO scoreboard.sv(107) @ 32795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-14 c33=-47
+# UVM_INFO scoreboard.sv(107) @ 32915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=112 c33=5
+# UVM_INFO scoreboard.sv(107) @ 33035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=25 c33=-93
+# UVM_INFO scoreboard.sv(107) @ 33155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=53 c33=127
+# UVM_INFO scoreboard.sv(107) @ 33275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=17 c33=105
+# UVM_INFO scoreboard.sv(107) @ 33395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=36
+# UVM_INFO scoreboard.sv(107) @ 33515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=79 c33=69
+# UVM_INFO scoreboard.sv(107) @ 33635: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-24 c33=-13
+# UVM_INFO scoreboard.sv(107) @ 33755: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=83 c33=-3
+# UVM_INFO scoreboard.sv(107) @ 33875: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-86 c33=78
+# UVM_INFO scoreboard.sv(107) @ 33995: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-12 c33=98
+# UVM_INFO scoreboard.sv(107) @ 34115: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=120 c33=9
+# UVM_INFO scoreboard.sv(107) @ 34235: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-35 c33=-30
+# UVM_INFO scoreboard.sv(107) @ 34355: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=34 c33=34
+# UVM_INFO scoreboard.sv(107) @ 34475: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=28 c33=-19
+# UVM_INFO scoreboard.sv(107) @ 34595: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-97 c33=6
+# UVM_INFO scoreboard.sv(107) @ 34715: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-11 c33=-8
+# UVM_INFO scoreboard.sv(107) @ 34835: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-76 c33=-37
+# UVM_INFO scoreboard.sv(107) @ 34955: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=7 c33=-54
+# UVM_INFO scoreboard.sv(107) @ 35075: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-25 c33=63
+# UVM_INFO scoreboard.sv(107) @ 35195: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-37 c33=38
+# UVM_INFO scoreboard.sv(107) @ 35315: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=51 c33=-7
+# UVM_INFO scoreboard.sv(107) @ 35435: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=27 c33=69
+# UVM_INFO scoreboard.sv(107) @ 35555: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=85 c33=74
+# UVM_INFO scoreboard.sv(107) @ 35675: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=8 c33=-10
+# UVM_INFO scoreboard.sv(107) @ 35795: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=2 c33=0
+# UVM_INFO scoreboard.sv(107) @ 35915: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=66 c33=-62
+# UVM_INFO scoreboard.sv(107) @ 36035: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=56 c33=17
+# UVM_INFO scoreboard.sv(107) @ 36155: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=12 c33=17
+# UVM_INFO scoreboard.sv(107) @ 36275: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-7 c33=47
+# UVM_INFO scoreboard.sv(107) @ 36395: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-99 c33=8
+# UVM_INFO scoreboard.sv(107) @ 36515: uvm_test_top.environment_h.scoreboard_h [SCOREBOARD] Matrix match: case=RANDOM latency=9 c00=-10 c33=25
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 36515: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# No errors -- passed testbench
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :  310
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [SCOREBOARD]   304
+# [SYSTOLIC_SEQ]     1
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# ** Note: $finish    : /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 36515 ns  Iteration: 62  Instance: /top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# Stopped at /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:25:59 on Jun 30,2026
+# vcover report systolic_array.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[3]/col_gen[3]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[3]/col_gen[2]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[3]/col_gen[1]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[3]/col_gen[0]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[2]/col_gen[3]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[2]/col_gen[2]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[2]/col_gen[1]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[2]/col_gen[0]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[1]/col_gen[3]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[1]/col_gen[2]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[1]/col_gen[1]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[1]/col_gen[0]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[0]/col_gen[3]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[0]/col_gen[2]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[0]/col_gen[1]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT/row_gen[0]/col_gen[0]/pe_i
+# === Design Unit: work.systolic_pe
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                         4         4         0   100.00%
+#     Conditions                       2         2         0   100.00%
+#     Statements                       7         7         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT
+# === Design Unit: work.systolic_array
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        14        13         1    92.85%
+#     Conditions                      11         9         2    81.81%
+#     Expressions                      3         2         1    66.66%
+#     Statements                      91        90         1    98.90%
+# 
+# =================================================================================
+# === Instance: /systolic_array_pkg
+# === Design Unit: work.systolic_array_pkg
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Assertions                       2         2         0   100.00%
+#     Covergroups                      3        na        na   100.00%
+#         Coverpoints/Crosses          8        na        na        na
+#             Covergroup Bins         63        63         0   100.00%
+# 
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 3
+# 
+# TOTAL ASSERTION COVERAGE: 100.00%  ASSERTIONS: 2
+# 
+# Total Coverage By Instance (filtered view): 93.37%
+# 
+# End time: 17:25:59 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 17:25:59 on Jun 30,2026
+# vcover report systolic_array.ucdb -cvg -details 
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /systolic_array_pkg
+# === Design Unit: work.systolic_array_pkg
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      3        na        na   100.00%
+#         Coverpoints/Crosses          8        na        na        na
+#             Covergroup Bins         63        63         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /systolic_array_pkg/systolic_array_coverage/matrix_cases 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint case_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                            1          1          -    Covered              
+#         bin identity                                        1          1          -    Covered              
+#         bin signed_corners                                  1          1          -    Covered              
+#         bin alternating                                     1          1          -    Covered              
+#         bin random                                        300          1          -    Covered              
+#     Coverpoint latency_cp                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin expected                                      304          1          -    Covered              
+#     Coverpoint active_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin bottom_right_active                           304          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::matrix_cases  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint case_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                            1          1          -    Covered              
+#         bin identity                                        1          1          -    Covered              
+#         bin signed_corners                                  1          1          -    Covered              
+#         bin alternating                                     1          1          -    Covered              
+#         bin random                                        300          1          -    Covered              
+#     Coverpoint latency_cp                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin expected                                      304          1          -    Covered              
+#     Coverpoint active_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin bottom_right_active                           304          1          -    Covered              
+#  TYPE /systolic_array_pkg/systolic_array_coverage/int8_values 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    48         48          -                      
+#     missing/total bins:                                     0         48          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint a_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         5200          1          -    Covered              
+#         bin plus_one                                     4208          1          -    Covered              
+#         bin minus_one                                    4720          1          -    Covered              
+#         bin mid                                         63632          1          -    Covered              
+#     Coverpoint b_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         4928          1          -    Covered              
+#         bin plus_one                                     4144          1          -    Covered              
+#         bin minus_one                                    4640          1          -    Covered              
+#         bin mid                                         64048          1          -    Covered              
+#     Cross value_cross                                 100.00%        100          -    Covered              
+#         covered/total bins:                                36         36          -                      
+#         missing/total bins:                                 0         36          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <mid,mid>                               52672          1          -    Covered              
+#             bin <minus_one,mid>                          3839          1          -    Covered              
+#             bin <plus_one,mid>                           3416          1          -    Covered              
+#             bin <zero,mid>                               4097          1          -    Covered              
+#             bin <max_pos,mid>                              12          1          -    Covered              
+#             bin <min_neg,mid>                              12          1          -    Covered              
+#             bin <mid,minus_one>                          3764          1          -    Covered              
+#             bin <minus_one,minus_one>                     297          1          -    Covered              
+#             bin <plus_one,minus_one>                      284          1          -    Covered              
+#             bin <zero,minus_one>                          287          1          -    Covered              
+#             bin <max_pos,minus_one>                         4          1          -    Covered              
+#             bin <min_neg,minus_one>                         4          1          -    Covered              
+#             bin <mid,plus_one>                           3390          1          -    Covered              
+#             bin <minus_one,plus_one>                      270          1          -    Covered              
+#             bin <plus_one,plus_one>                       222          1          -    Covered              
+#             bin <zero,plus_one>                           254          1          -    Covered              
+#             bin <max_pos,plus_one>                          4          1          -    Covered              
+#             bin <min_neg,plus_one>                          4          1          -    Covered              
+#             bin <mid,zero>                               3782          1          -    Covered              
+#             bin <minus_one,zero>                          306          1          -    Covered              
+#             bin <plus_one,zero>                           278          1          -    Covered              
+#             bin <zero,zero>                               554          1          -    Covered              
+#             bin <max_pos,zero>                              4          1          -    Covered              
+#             bin <min_neg,zero>                              4          1          -    Covered              
+#             bin <mid,max_pos>                              12          1          -    Covered              
+#             bin <minus_one,max_pos>                         4          1          -    Covered              
+#             bin <plus_one,max_pos>                          4          1          -    Covered              
+#             bin <zero,max_pos>                              4          1          -    Covered              
+#             bin <max_pos,max_pos>                           4          1          -    Covered              
+#             bin <min_neg,max_pos>                           4          1          -    Covered              
+#             bin <mid,min_neg>                              12          1          -    Covered              
+#             bin <minus_one,min_neg>                         4          1          -    Covered              
+#             bin <plus_one,min_neg>                          4          1          -    Covered              
+#             bin <zero,min_neg>                              4          1          -    Covered              
+#             bin <max_pos,min_neg>                           4          1          -    Covered              
+#             bin <min_neg,min_neg>                           4          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::int8_values  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    48         48          -                      
+#     missing/total bins:                                     0         48          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint a_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         5200          1          -    Covered              
+#         bin plus_one                                     4208          1          -    Covered              
+#         bin minus_one                                    4720          1          -    Covered              
+#         bin mid                                         63632          1          -    Covered              
+#     Coverpoint b_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         4928          1          -    Covered              
+#         bin plus_one                                     4144          1          -    Covered              
+#         bin minus_one                                    4640          1          -    Covered              
+#         bin mid                                         64048          1          -    Covered              
+#     Cross value_cross                                 100.00%        100          -    Covered              
+#         covered/total bins:                                36         36          -                      
+#         missing/total bins:                                 0         36          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <mid,mid>                               52672          1          -    Covered              
+#             bin <minus_one,mid>                          3839          1          -    Covered              
+#             bin <plus_one,mid>                           3416          1          -    Covered              
+#             bin <zero,mid>                               4097          1          -    Covered              
+#             bin <max_pos,mid>                              12          1          -    Covered              
+#             bin <min_neg,mid>                              12          1          -    Covered              
+#             bin <mid,minus_one>                          3764          1          -    Covered              
+#             bin <minus_one,minus_one>                     297          1          -    Covered              
+#             bin <plus_one,minus_one>                      284          1          -    Covered              
+#             bin <zero,minus_one>                          287          1          -    Covered              
+#             bin <max_pos,minus_one>                         4          1          -    Covered              
+#             bin <min_neg,minus_one>                         4          1          -    Covered              
+#             bin <mid,plus_one>                           3390          1          -    Covered              
+#             bin <minus_one,plus_one>                      270          1          -    Covered              
+#             bin <plus_one,plus_one>                       222          1          -    Covered              
+#             bin <zero,plus_one>                           254          1          -    Covered              
+#             bin <max_pos,plus_one>                          4          1          -    Covered              
+#             bin <min_neg,plus_one>                          4          1          -    Covered              
+#             bin <mid,zero>                               3782          1          -    Covered              
+#             bin <minus_one,zero>                          306          1          -    Covered              
+#             bin <plus_one,zero>                           278          1          -    Covered              
+#             bin <zero,zero>                               554          1          -    Covered              
+#             bin <max_pos,zero>                              4          1          -    Covered              
+#             bin <min_neg,zero>                              4          1          -    Covered              
+#             bin <mid,max_pos>                              12          1          -    Covered              
+#             bin <minus_one,max_pos>                         4          1          -    Covered              
+#             bin <plus_one,max_pos>                          4          1          -    Covered              
+#             bin <zero,max_pos>                              4          1          -    Covered              
+#             bin <max_pos,max_pos>                           4          1          -    Covered              
+#             bin <min_neg,max_pos>                           4          1          -    Covered              
+#             bin <mid,min_neg>                              12          1          -    Covered              
+#             bin <minus_one,min_neg>                         4          1          -    Covered              
+#             bin <plus_one,min_neg>                          4          1          -    Covered              
+#             bin <zero,min_neg>                              4          1          -    Covered              
+#             bin <max_pos,min_neg>                           4          1          -    Covered              
+#             bin <min_neg,min_neg>                           4          1          -    Covered              
+#  TYPE /systolic_array_pkg/systolic_array_coverage/result_values 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint position_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin corner                                       1216          1          -    Covered              
+#         bin diagonal                                      608          1          -    Covered              
+#         bin off_diagonal                                 3040          1          -    Covered              
+#     Coverpoint result_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                           58          1          -    Covered              
+#         bin positive                                     2398          1          -    Covered              
+#         bin negative                                     2400          1          -    Covered              
+#         bin large_positive                                  4          1          -    Covered              
+#         bin large_negative                                  4          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::result_values  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint position_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin corner                                       1216          1          -    Covered              
+#         bin diagonal                                      608          1          -    Covered              
+#         bin off_diagonal                                 3040          1          -    Covered              
+#     Coverpoint result_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                           58          1          -    Covered              
+#         bin positive                                     2398          1          -    Covered              
+#         bin negative                                     2400          1          -    Covered              
+#         bin large_positive                                  4          1          -    Covered              
+#         bin large_negative                                  4          1          -    Covered              
+# 
+# COVERGROUP COVERAGE:
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /systolic_array_pkg/systolic_array_coverage/matrix_cases 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint case_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                            1          1          -    Covered              
+#         bin identity                                        1          1          -    Covered              
+#         bin signed_corners                                  1          1          -    Covered              
+#         bin alternating                                     1          1          -    Covered              
+#         bin random                                        300          1          -    Covered              
+#     Coverpoint latency_cp                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin expected                                      304          1          -    Covered              
+#     Coverpoint active_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin bottom_right_active                           304          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::matrix_cases  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint case_cp                                100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                            1          1          -    Covered              
+#         bin identity                                        1          1          -    Covered              
+#         bin signed_corners                                  1          1          -    Covered              
+#         bin alternating                                     1          1          -    Covered              
+#         bin random                                        300          1          -    Covered              
+#     Coverpoint latency_cp                             100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin expected                                      304          1          -    Covered              
+#     Coverpoint active_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 1          1          -                      
+#         missing/total bins:                                 0          1          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin bottom_right_active                           304          1          -    Covered              
+#  TYPE /systolic_array_pkg/systolic_array_coverage/int8_values 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    48         48          -                      
+#     missing/total bins:                                     0         48          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint a_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         5200          1          -    Covered              
+#         bin plus_one                                     4208          1          -    Covered              
+#         bin minus_one                                    4720          1          -    Covered              
+#         bin mid                                         63632          1          -    Covered              
+#     Coverpoint b_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         4928          1          -    Covered              
+#         bin plus_one                                     4144          1          -    Covered              
+#         bin minus_one                                    4640          1          -    Covered              
+#         bin mid                                         64048          1          -    Covered              
+#     Cross value_cross                                 100.00%        100          -    Covered              
+#         covered/total bins:                                36         36          -                      
+#         missing/total bins:                                 0         36          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <mid,mid>                               52672          1          -    Covered              
+#             bin <minus_one,mid>                          3839          1          -    Covered              
+#             bin <plus_one,mid>                           3416          1          -    Covered              
+#             bin <zero,mid>                               4097          1          -    Covered              
+#             bin <max_pos,mid>                              12          1          -    Covered              
+#             bin <min_neg,mid>                              12          1          -    Covered              
+#             bin <mid,minus_one>                          3764          1          -    Covered              
+#             bin <minus_one,minus_one>                     297          1          -    Covered              
+#             bin <plus_one,minus_one>                      284          1          -    Covered              
+#             bin <zero,minus_one>                          287          1          -    Covered              
+#             bin <max_pos,minus_one>                         4          1          -    Covered              
+#             bin <min_neg,minus_one>                         4          1          -    Covered              
+#             bin <mid,plus_one>                           3390          1          -    Covered              
+#             bin <minus_one,plus_one>                      270          1          -    Covered              
+#             bin <plus_one,plus_one>                       222          1          -    Covered              
+#             bin <zero,plus_one>                           254          1          -    Covered              
+#             bin <max_pos,plus_one>                          4          1          -    Covered              
+#             bin <min_neg,plus_one>                          4          1          -    Covered              
+#             bin <mid,zero>                               3782          1          -    Covered              
+#             bin <minus_one,zero>                          306          1          -    Covered              
+#             bin <plus_one,zero>                           278          1          -    Covered              
+#             bin <zero,zero>                               554          1          -    Covered              
+#             bin <max_pos,zero>                              4          1          -    Covered              
+#             bin <min_neg,zero>                              4          1          -    Covered              
+#             bin <mid,max_pos>                              12          1          -    Covered              
+#             bin <minus_one,max_pos>                         4          1          -    Covered              
+#             bin <plus_one,max_pos>                          4          1          -    Covered              
+#             bin <zero,max_pos>                              4          1          -    Covered              
+#             bin <max_pos,max_pos>                           4          1          -    Covered              
+#             bin <min_neg,max_pos>                           4          1          -    Covered              
+#             bin <mid,min_neg>                              12          1          -    Covered              
+#             bin <minus_one,min_neg>                         4          1          -    Covered              
+#             bin <plus_one,min_neg>                          4          1          -    Covered              
+#             bin <zero,min_neg>                              4          1          -    Covered              
+#             bin <max_pos,min_neg>                           4          1          -    Covered              
+#             bin <min_neg,min_neg>                           4          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::int8_values  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    48         48          -                      
+#     missing/total bins:                                     0         48          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint a_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         5200          1          -    Covered              
+#         bin plus_one                                     4208          1          -    Covered              
+#         bin minus_one                                    4720          1          -    Covered              
+#         bin mid                                         63632          1          -    Covered              
+#     Coverpoint b_cp                                   100.00%        100          -    Covered              
+#         covered/total bins:                                 6          6          -                      
+#         missing/total bins:                                 0          6          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin min_neg                                        32          1          -    Covered              
+#         bin max_pos                                        32          1          -    Covered              
+#         bin zero                                         4928          1          -    Covered              
+#         bin plus_one                                     4144          1          -    Covered              
+#         bin minus_one                                    4640          1          -    Covered              
+#         bin mid                                         64048          1          -    Covered              
+#     Cross value_cross                                 100.00%        100          -    Covered              
+#         covered/total bins:                                36         36          -                      
+#         missing/total bins:                                 0         36          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <mid,mid>                               52672          1          -    Covered              
+#             bin <minus_one,mid>                          3839          1          -    Covered              
+#             bin <plus_one,mid>                           3416          1          -    Covered              
+#             bin <zero,mid>                               4097          1          -    Covered              
+#             bin <max_pos,mid>                              12          1          -    Covered              
+#             bin <min_neg,mid>                              12          1          -    Covered              
+#             bin <mid,minus_one>                          3764          1          -    Covered              
+#             bin <minus_one,minus_one>                     297          1          -    Covered              
+#             bin <plus_one,minus_one>                      284          1          -    Covered              
+#             bin <zero,minus_one>                          287          1          -    Covered              
+#             bin <max_pos,minus_one>                         4          1          -    Covered              
+#             bin <min_neg,minus_one>                         4          1          -    Covered              
+#             bin <mid,plus_one>                           3390          1          -    Covered              
+#             bin <minus_one,plus_one>                      270          1          -    Covered              
+#             bin <plus_one,plus_one>                       222          1          -    Covered              
+#             bin <zero,plus_one>                           254          1          -    Covered              
+#             bin <max_pos,plus_one>                          4          1          -    Covered              
+#             bin <min_neg,plus_one>                          4          1          -    Covered              
+#             bin <mid,zero>                               3782          1          -    Covered              
+#             bin <minus_one,zero>                          306          1          -    Covered              
+#             bin <plus_one,zero>                           278          1          -    Covered              
+#             bin <zero,zero>                               554          1          -    Covered              
+#             bin <max_pos,zero>                              4          1          -    Covered              
+#             bin <min_neg,zero>                              4          1          -    Covered              
+#             bin <mid,max_pos>                              12          1          -    Covered              
+#             bin <minus_one,max_pos>                         4          1          -    Covered              
+#             bin <plus_one,max_pos>                          4          1          -    Covered              
+#             bin <zero,max_pos>                              4          1          -    Covered              
+#             bin <max_pos,max_pos>                           4          1          -    Covered              
+#             bin <min_neg,max_pos>                           4          1          -    Covered              
+#             bin <mid,min_neg>                              12          1          -    Covered              
+#             bin <minus_one,min_neg>                         4          1          -    Covered              
+#             bin <plus_one,min_neg>                          4          1          -    Covered              
+#             bin <zero,min_neg>                              4          1          -    Covered              
+#             bin <max_pos,min_neg>                           4          1          -    Covered              
+#             bin <min_neg,min_neg>                           4          1          -    Covered              
+#  TYPE /systolic_array_pkg/systolic_array_coverage/result_values 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint position_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin corner                                       1216          1          -    Covered              
+#         bin diagonal                                      608          1          -    Covered              
+#         bin off_diagonal                                 3040          1          -    Covered              
+#     Coverpoint result_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                           58          1          -    Covered              
+#         bin positive                                     2398          1          -    Covered              
+#         bin negative                                     2400          1          -    Covered              
+#         bin large_positive                                  4          1          -    Covered              
+#         bin large_negative                                  4          1          -    Covered              
+#  Covergroup instance \/systolic_array_pkg::systolic_array_coverage::result_values  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     8          8          -                      
+#     missing/total bins:                                     0          8          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint position_cp                            100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin corner                                       1216          1          -    Covered              
+#         bin diagonal                                      608          1          -    Covered              
+#         bin off_diagonal                                 3040          1          -    Covered              
+#     Coverpoint result_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin zero                                           58          1          -    Covered              
+#         bin positive                                     2398          1          -    Covered              
+#         bin negative                                     2400          1          -    Covered              
+#         bin large_positive                                  4          1          -    Covered              
+#         bin large_negative                                  4          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 3
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 17:25:59 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+# sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+No errors -- passed testbench
+#  quit -f
+# End time: 17:25:59 on Jun 30,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+No errors -- passed testbench

@@ -19,11 +19,28 @@ class systolic_array_scoreboard extends uvm_scoreboard;
         scoreboard_port = new("scoreboard_port", this);
     endfunction : build_phase
 
+    function logic signed [DATA_WIDTH-1:0] corner_value(input int index);
+        unique case (index % 8)
+            0: return 8'sd0;
+            1: return 8'sd1;
+            2: return -8'sd1;
+            3: return 8'sd127;
+            4: return -8'sd128;
+            5: return 8'sd42;
+            6: return -8'sd64;
+            default: return 8'sd7;
+        endcase
+    endfunction : corner_value
+
     function matrix_case_t classify_case(input systolic_array_transaction tx);
         bit all_zero;
         bit identity_a;
+        bit signed_corners;
+        bit alternating;
         all_zero = 1'b1;
         identity_a = 1'b1;
+        signed_corners = 1'b1;
+        alternating = 1'b1;
 
         for (int row = 0; row < N; row++) begin
             for (int col = 0; col < N; col++) begin
@@ -31,6 +48,12 @@ class systolic_array_scoreboard extends uvm_scoreboard;
                     all_zero = 1'b0;
                 if (tx.a[row][col] != ((row == col) ? 8'sd1 : 8'sd0))
                     identity_a = 1'b0;
+                if ((tx.a[row][col] != corner_value(row * N + col))
+                 || (tx.b[row][col] != corner_value((row * N + col) + 3)))
+                    signed_corners = 1'b0;
+                if ((tx.a[row][col] != (((row + col) % 2) ? -8'sd3 : 8'sd5))
+                 || (tx.b[row][col] != ((row == col) ? -8'sd2 : 8'sd4)))
+                    alternating = 1'b0;
             end
         end
 
@@ -38,6 +61,10 @@ class systolic_array_scoreboard extends uvm_scoreboard;
             return CASE_ZERO;
         if (identity_a)
             return CASE_IDENTITY;
+        if (signed_corners)
+            return CASE_SIGNED_CORNERS;
+        if (alternating)
+            return CASE_ALTERNATING;
         return CASE_RANDOM;
     endfunction : classify_case
 

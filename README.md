@@ -128,6 +128,14 @@ A dual-mode low-precision MAC PE for AI datapath verification: INT8 mode accumul
 - **Testbench**: UVM environment with directed INT8 saturation, directed BF16 finite/special-value checks, constrained-random mixed-mode streams, scoreboard self-checks, and three covergroups for mode/control sequencing, INT8 corners, and BF16 classes.
 - **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SAT_SKIP_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 857 UVM errors.
 
+### 17. Systolic Array
+A 4x4 signed INT8 output-stationary systolic matrix-multiply tile. A generated PE grid skews A rows east and B columns south, accumulating each signed INT32 output element locally before exposing the flattened C matrix.
+
+- **Folder**: SystolicArray
+- **Files**: `systolic_array.sv`, `systolic_array_bfm.sv`, `systolic_array_pkg.sv`, UVM class files, `top.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `waveform_samples.csv`, `waveforms.png`, `datapath.png`, `transcript.txt`, `transcript_negative.txt`, `transcript_red.txt`
+- **Testbench**: UVM environment with zero, identity, signed-corner, alternating-sign, and 300 constrained-random 4x4 matrix cases. The scoreboard recomputes the full signed INT32 reference matrix and checks every output plus final latency.
+- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SKIP_PE_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 296 UVM errors.
+
 ## Verification
 
 ### Assertions

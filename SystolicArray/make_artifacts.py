@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+"""Generate SystolicArray waveform and datapath artifacts from the clean VCD."""
+
+from __future__ import annotations
+
+import csv
+import html
+import re
+import shutil
+import subprocess
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+VCD = ROOT / "systolic_array_waveforms.vcd"
+CSV_OUT = ROOT / "waveform_samples.csv"
+WAVEFORM_SVG = ROOT / "waveforms.svg"
+WAVEFORM_PNG = ROOT / "waveforms.png"
+DATAPATH_SVG = ROOT / "datapath.svg"
+DATAPATH_PNG = ROOT / "datapath.png"
+
+SIGNALS = {
+    "clk",
+    "rst",
+    "start",
+    "busy",
+    "done",
+    "cycle_count",
+    "pe_active",
+    "c_matrix",
+}
+
+
+def bits_to_unsigned(bits: str) -> int:
+    return int(bits.replace("x", "0").replace("z", "0"), 2)
+
+
+def bits_to_signed(bits: str) -> int:
+    unsigned = bits_to_unsigned(bits)
+    width = len(bits)
+    if width and bits[0] == "1":
+        return unsigned - (1 << width)
+    return unsigned
+
+
+def popcount(value: int) -> int:
+    return bin(value).count("1")
+
+
+def slice_bits(bits: str, lsb: int, width: int) -> str:
+    clean = bits.replace("x", "0").replace("z", "0").zfill(lsb + width)
+    start = len(clean) - lsb - width
+    end = len(clean) - lsb
+    return clean[start:end]
+
+
+def matrix_cell(bits: str, row: int, col: int) -> int:
+    linear = row * 4 + col
+    return bits_to_signed(slice_bits(bits, linear * 32, 32))
+
+
+def parse_vcd(path: Path) -> list[dict[str, int]]:
+    if not path.exists():
+        raise SystemExit(f"missing VCD: {path}")
+
+    id_to_name: dict[str, str] = {}
+    values: dict[str, str] = {name: "0" for name in SIGNALS}
+    rows: list[dict[str, int]] = []
+    current_time = 0
+    have_time = False
+    last_clk = "0"
+    in_header = True
+    scope_stack: list[str] = []
+    var_re = re.compile(r"\$var\s+\S+\s+\d+\s+(\S+)\s+(\S+)")
+
+    def sample_current_time() -> None:
+        nonlocal last_clk
+        clk_value = values["clk"]
+        if last_clk != "1" and clk_value == "1":
+            c_bits = values["c_matrix"]
+            active = bits_to_unsigned(values["pe_active"])
+            rows.append({
+                "time_ns": current_time,
+                "sample": len(rows),
+                "rst": bits_to_unsigned(values["rst"]),
+                "start": bits_to_unsigned(values["start"]),
+                "busy": bits_to_unsigned(values["busy"]),
+                "done": bits_to_unsigned(values["done"]),
+                "cycle_count": bits_to_unsigned(values["cycle_count"]),
+                "pe_active_hex": active,
+                "active_count": popcount(active),
+                "c00": matrix_cell(c_bits, 0, 0),
+                "c03": matrix_cell(c_bits, 0, 3),
+                "c30": matrix_cell(c_bits, 3, 0),
+                "c33": matrix_cell(c_bits, 3, 3),
+            })
+        last_clk = clk_value
+
+    for raw_line in path.read_text(errors="replace").splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+
+        if in_header:
+            if line.startswith("$scope "):
+                fields = line.split()
+                if len(fields) >= 3:
+                    scope_stack.append(fields[2])
+                continue
+            if line.startswith("$upscope"):
+                if scope_stack:
+                    scope_stack.pop()
+                continue
+            match = var_re.match(line)
+            if match:
+                code, name = match.groups()
+                clean_name = name.split("[", 1)[0]
+                if scope_stack == ["top", "bfm"] and clean_name in SIGNALS:
+                    id_to_name[code] = clean_name
+            if line == "$enddefinitions $end":
+                in_header = False
+            continue
+
+        if line.startswith("#"):
+            if have_time:
+                sample_current_time()
+            current_time = int(line[1:])
+            have_time = True
+            continue
+
+        if line[0] in "01xz":
+            code = line[1:]
+            value = line[0]
+        elif line[0] in "bB":
+            fields = line[1:].split()
+            if len(fields) != 2:
+                continue
+            value, code = fields
+        else:
+            continue
+
+        name = id_to_name.get(code)
+        if name is None:
+            continue
+
+        values[name] = value
+
+    if have_time:
+        sample_current_time()
+    return rows
+
+
+def write_csv(rows: list[dict[str, int]], path: Path) -> None:
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def selected_rows(rows: list[dict[str, int]], count: int) -> list[dict[str, int]]:
+    active = [row for row in rows if row["sample"] > 3]
+    if len(active) <= count:
+        return active
+    return active[:count]
+
+
+def polyline(points: list[tuple[float, float]]) -> str:
+    return " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+
+
+def render_waveforms(rows: list[dict[str, int]], path: Path) -> None:
+    sampled = selected_rows(rows, 96)
+    width = 1500
+    height = 840
+    left = 166
+    right = 48
+    top = 82
+    lane_h = 76
+    plot_w = width - left - right
+
+    lanes = [
+        ("start", "start", "bit"),
+        ("busy", "busy", "bit"),
+        ("done", "done", "bit"),
+        ("cycle_count", "cycle", "bus"),
+        ("active_count", "active PEs", "bus"),
+        ("pe_active_hex", "pe_active", "hex"),
+        ("c00", "c[0][0]", "signed"),
+        ("c33", "c[3][3]", "signed"),
+    ]
+
+    def x_at(index: int) -> float:
+        if len(sampled) <= 1:
+            return left
+        return left + (index * plot_w / (len(sampled) - 1))
+
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
+        '<text x="42" y="38" font-family="Arial, sans-serif" font-size="26" font-weight="700">SystolicArray clean simulation waveform</text>',
+        '<text x="42" y="62" font-family="Arial, sans-serif" font-size="14" fill="#555">Clock samples parsed from top.bfm in systolic_array_waveforms.vcd; final transaction latency index is 9.</text>',
+    ]
+
+    for index in range(len(sampled)):
+        x = x_at(index)
+        if sampled[index]["done"]:
+            parts.append(f'<rect x="{x - 2:.1f}" y="{top - 20}" width="4" height="{height - 122}" fill="#d7efe4"/>')
+        elif sampled[index]["start"]:
+            parts.append(f'<rect x="{x - 1:.1f}" y="{top - 20}" width="2" height="{height - 122}" fill="#d8e3f8"/>')
+
+    for lane_index, (key, label, kind) in enumerate(lanes):
+        y_mid = top + lane_index * lane_h + 25
+        y_hi = y_mid - 16
+        y_lo = y_mid + 16
+        parts.append(f'<text x="38" y="{y_mid + 5}" font-family="Arial, sans-serif" font-size="16" fill="#111">{html.escape(label)}</text>')
+        parts.append(f'<line x1="{left}" y1="{y_lo}" x2="{width - right}" y2="{y_lo}" stroke="#d0d0d0" stroke-width="1"/>')
+
+        if kind == "bit":
+            points: list[tuple[float, float]] = []
+            previous_y = y_lo
+            for index, row in enumerate(sampled):
+                x = x_at(index)
+                y = y_hi if row[key] else y_lo
+                if index:
+                    points.append((x, previous_y))
+                points.append((x, y))
+                previous_y = y
+            parts.append(f'<polyline points="{polyline(points)}" fill="none" stroke="#145c74" stroke-width="2.5"/>')
+        else:
+            for index, row in enumerate(sampled[:-1]):
+                x0 = x_at(index)
+                x1 = x_at(index + 1)
+                fill = "#f8f8f8" if index % 2 else "#ffffff"
+                parts.append(f'<rect x="{x0:.1f}" y="{y_hi}" width="{x1 - x0:.1f}" height="{y_lo - y_hi}" fill="{fill}" stroke="#222" stroke-width="0.8"/>')
+                if index % 14 == 0 or row["done"]:
+                    if kind == "hex":
+                        text = f'{row[key]:04X}'
+                    else:
+                        text = str(row[key])
+                    parts.append(f'<text x="{x0 + 4:.1f}" y="{y_mid + 5}" font-family="Arial, sans-serif" font-size="11" fill="#111">{html.escape(text)}</text>')
+
+    done_count = sum(1 for row in rows if row["done"])
+    parts.append(f'<text x="{left}" y="{height - 28}" font-family="Arial, sans-serif" font-size="13" fill="#555">CSV rows: {len(rows)} clock samples. Done pulses observed: {done_count}. Green bands mark checked matrix results sampled by the UVM monitor.</text>')
+    parts.append("</svg>")
+    path.write_text("\n".join(parts))
+
+
+def render_datapath(path: Path) -> None:
+    width = 1400
+    height = 860
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#222"/></marker></defs>',
+        '<text x="48" y="54" font-family="Arial, sans-serif" font-size="30" font-weight="700">4x4 Output-Stationary Systolic Array</text>',
+        '<text x="48" y="82" font-family="Arial, sans-serif" font-size="15" fill="#555">A rows skew east, B columns skew south, and each PE accumulates one signed INT32 C element.</text>',
+    ]
+
+    def box(x: int, y: int, w: int, h: int, title: str, body: str, fill: str) -> None:
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{fill}" stroke="#222" stroke-width="2"/>')
+        parts.append(f'<text x="{x + 16}" y="{y + 32}" font-family="Arial, sans-serif" font-size="18" font-weight="700">{html.escape(title)}</text>')
+        for line_index, line in enumerate(body.split("\\n")):
+            parts.append(f'<text x="{x + 16}" y="{y + 60 + line_index * 22}" font-family="Arial, sans-serif" font-size="14" fill="#222">{html.escape(line)}</text>')
+
+    def arrow(x1: int, y1: int, x2: int, y2: int, label: str = "") -> None:
+        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#222" stroke-width="2.2" marker-end="url(#arrow)"/>')
+        if label:
+            parts.append(f'<text x="{(x1 + x2) / 2 - 34:.1f}" y="{(y1 + y2) / 2 - 10:.1f}" font-family="Arial, sans-serif" font-size="13" fill="#222">{html.escape(label)}</text>')
+
+    box(48, 126, 230, 128, "Input Latch", "Flattened signed INT8\\nA[4][4], B[4][4]\\nloaded on start", "#eef5f1")
+    box(48, 560, 230, 130, "Controller", "cycle_count 0..9\\nbusy during wavefront\\ndone after final PE settles", "#f4f4f4")
+    box(1110, 258, 230, 138, "Output Matrix", "Flattened signed INT32\\nC[row][col] from PE acc\\nchecked on done pulse", "#eef7fb")
+    box(1110, 520, 230, 132, "Bug Hook", "SKIP_PE_BUG disables\\nthe bottom-right PE\\nnegative run must fail", "#f7eef1")
+
+    grid_x = 418
+    grid_y = 182
+    cell = 118
+    gap = 22
+
+    for row in range(4):
+        y = grid_y + row * (cell + gap)
+        parts.append(f'<text x="{grid_x - 70}" y="{y + 64}" font-family="Arial, sans-serif" font-size="14" fill="#333">A row {row}</text>')
+        arrow(grid_x - 36, y + 58, grid_x - 4, y + 58)
+
+    for col in range(4):
+        x = grid_x + col * (cell + gap)
+        parts.append(f'<text x="{x + 24}" y="{grid_y - 42}" font-family="Arial, sans-serif" font-size="14" fill="#333">B col {col}</text>')
+        arrow(x + 58, grid_y - 30, x + 58, grid_y - 4)
+
+    for row in range(4):
+        for col in range(4):
+            x = grid_x + col * (cell + gap)
+            y = grid_y + row * (cell + gap)
+            fill = "#fff7df" if (row + col) % 2 == 0 else "#eaf2ff"
+            parts.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="6" fill="{fill}" stroke="#222" stroke-width="2"/>')
+            parts.append(f'<text x="{x + 28}" y="{y + 34}" font-family="Arial, sans-serif" font-size="17" font-weight="700">PE {row},{col}</text>')
+            parts.append(f'<text x="{x + 20}" y="{y + 64}" font-family="Arial, sans-serif" font-size="13" fill="#222">acc C[{row}][{col}]</text>')
+            parts.append(f'<text x="{x + 20}" y="{y + 88}" font-family="Arial, sans-serif" font-size="13" fill="#222">active t={row + col}..{row + col + 3}</text>')
+            if col < 3:
+                arrow(x + cell, y + 58, x + cell + gap - 4, y + 58)
+            if row < 3:
+                arrow(x + 58, y + cell, x + 58, y + cell + gap - 4)
+
+    arrow(278, 190, grid_x - 42, 240, "A skew")
+    arrow(278, 620, grid_x - 42, 660, "enable")
+    arrow(grid_x + 4 * cell + 3 * gap + 18, grid_y + 258, 1110, 326, "C")
+    arrow(grid_x + 3 * (cell + gap) + 80, grid_y + 3 * (cell + gap) + 118, 1110, 586, "PE 3,3")
+
+    note = "For PE(row,col), valid products occur when k = cycle_count - row - col and 0 <= k < 4. The final bottom-right product occurs at cycle index 9."
+    parts.append(f'<text x="420" y="780" font-family="Arial, sans-serif" font-size="14" fill="#555">{html.escape(note)}</text>')
+    parts.append("</svg>")
+    path.write_text("\n".join(parts))
+
+
+def convert_with_sips(source: Path, dest: Path, fmt: str) -> None:
+    if shutil.which("sips") is None:
+        raise SystemExit("sips is required to render artifacts on this machine")
+    subprocess.run(
+        ["sips", "-s", "format", fmt, str(source), "--out", str(dest)],
+        check=True,
+        stdout=subprocess.DEVNULL,
+    )
+
+
+def main() -> None:
+    rows = parse_vcd(VCD)
+    if not rows:
+        raise SystemExit("no clock samples found in VCD")
+    write_csv(rows, CSV_OUT)
+    render_waveforms(rows, WAVEFORM_SVG)
+    render_datapath(DATAPATH_SVG)
+    convert_with_sips(WAVEFORM_SVG, WAVEFORM_PNG, "png")
+    convert_with_sips(DATAPATH_SVG, DATAPATH_PNG, "png")
+    WAVEFORM_SVG.unlink(missing_ok=True)
+    DATAPATH_SVG.unlink(missing_ok=True)
+
+
+if __name__ == "__main__":
+    main()
