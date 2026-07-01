@@ -7,6 +7,21 @@ values from the north side, so the array fills, computes, and drains over
 `3*N-2` cycles. The `done` pulse reports the final cycle count and exposes the
 full 4x4 output matrix.
 
+## Block Diagrams
+
+![SystolicArray block and verification diagram](block_diagram.png)
+
+The top-level block diagram separates the RTL boundary from the UVM verification
+boundary. The driver and BFM provide one flattened matrix pair per transaction,
+the RTL captures and skews the operands into the PE mesh, and the monitor
+publishes completed transactions to the scoreboard and covergroups.
+
+![SystolicArray datapath](datapath.png)
+
+The datapath diagram expands the generated 4x4 PE grid. A row value moves east
+once per cycle and a column value moves south once per cycle. Each PE keeps its
+own accumulator, so no output reduction network is needed.
+
 ## Interface
 
 - `start`: accepts one flattened pair of 4x4 signed INT8 matrices.
@@ -15,6 +30,46 @@ full 4x4 output matrix.
 - `done`: one-cycle pulse when all outputs are valid.
 - `cycle_count`: final wavefront cycle index, expected to be `3*N-3`.
 - `pe_active`: one bit per PE, useful for utilization and waveform evidence.
+
+## Matrix Layout
+
+The input and output ports are flattened in row-major order:
+
+| Matrix | Element | Bit Slice |
+| --- | --- | --- |
+| A | `A[row][col]` | `a_matrix[((row*N + col)*DATA_WIDTH) +: DATA_WIDTH]` |
+| B | `B[row][col]` | `b_matrix[((row*N + col)*DATA_WIDTH) +: DATA_WIDTH]` |
+| C | `C[row][col]` | `c_matrix[((row*N + col)*ACC_WIDTH) +: ACC_WIDTH]` |
+
+The UVM driver and monitor use the same row-major packing helpers, and the
+scoreboard recomputes `C[row][col] = sum(A[row][k] * B[k][col])` using signed
+INT32 arithmetic.
+
+## Wavefront Schedule
+
+![SystolicArray PE activation schedule](schedule.png)
+
+For PE `(row,col)`, product `k` is active when:
+
+```text
+k = cycle_count - row - col
+0 <= k < N
+```
+
+That means PE `(0,0)` starts at cycle 0, while PE `(3,3)` starts at cycle 6 and
+performs its final `k=3` product at cycle 9. `done` is intentionally delayed one
+clock after cycle 9 so the monitor samples after all PE accumulator nonblocking
+updates settle.
+
+## Waveform Evidence
+
+![SystolicArray clean simulation waveform](waveforms.png)
+
+`waveform_samples.csv` is parsed from the clean farm VCD at clock-sample
+granularity. It records 3,652 samples, 304 `done` pulses, the final latency
+index, selected output cells, and the PE enable mask. The final checked sample
+has `cycle_count=9`, `done=1`, and `pe_active=16'h8000`, matching the
+bottom-right PE's final active cycle.
 
 ## Verification Intent
 
@@ -26,6 +81,16 @@ classes, output positions, and bottom-right PE activity at pipeline drain.
 
 `SKIP_PE_BUG` deliberately suppresses one PE accumulation so the same scoreboard
 produces a negative run.
+
+## Verification Components
+
+| Component | Responsibility |
+| --- | --- |
+| `systolic_array_sequence` | Generates zero, identity, signed-corner, alternating, and random matrix cases. |
+| `systolic_array_driver` | Packs matrices into flattened ports, drives `start`, and waits for `done`. |
+| `systolic_array_monitor` | Samples completed transactions on `done` and unpacks A/B/C matrices. |
+| `systolic_array_scoreboard` | Checks latency and all 16 output cells against a signed INT32 reference model. |
+| `systolic_array_coverage` | Tracks case classes, INT8 value classes, result classes, and final PE activity. |
 
 ## Implementation Notes
 
@@ -53,4 +118,15 @@ captures the pre-implementation RED gate against the initial stub.
 
 `make_artifacts.py` parses the clean VCD into `waveform_samples.csv`, renders
 `waveforms.png` from 3,652 checked clock samples, and draws `datapath.png` for
-the implemented 4x4 PE grid.
+the implemented 4x4 PE grid. It also renders `block_diagram.png` and
+`schedule.png` so the diagrams remain reproducible from the same source script.
+
+To regenerate the image artifacts, copy a clean-run `systolic_array_waveforms.vcd`
+into this directory and run:
+
+```sh
+python3 make_artifacts.py
+```
+
+The raw VCD and UCDB are intentionally not committed; the manifest records the
+farm run directory that produced them.

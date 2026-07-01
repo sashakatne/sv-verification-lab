@@ -84,6 +84,8 @@ Committed evidence files:
   design.md
   MANIFEST.txt
   make_artifacts.py
+  block_diagram.png
+  schedule.png
   transcript.txt
   transcript_negative.txt
   transcript_red.txt

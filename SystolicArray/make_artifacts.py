@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate SystolicArray waveform and datapath artifacts from the clean VCD."""
+"""Generate SystolicArray waveform, block, schedule, and datapath artifacts."""
 
 from __future__ import annotations
 
@@ -18,6 +18,10 @@ WAVEFORM_SVG = ROOT / "waveforms.svg"
 WAVEFORM_PNG = ROOT / "waveforms.png"
 DATAPATH_SVG = ROOT / "datapath.svg"
 DATAPATH_PNG = ROOT / "datapath.png"
+BLOCK_DIAGRAM_SVG = ROOT / "block_diagram.svg"
+BLOCK_DIAGRAM_PNG = ROOT / "block_diagram.png"
+SCHEDULE_SVG = ROOT / "schedule.svg"
+SCHEDULE_PNG = ROOT / "schedule.png"
 
 SIGNALS = {
     "clk",
@@ -312,6 +316,112 @@ def render_datapath(path: Path) -> None:
     path.write_text("\n".join(parts))
 
 
+def render_block_diagram(path: Path) -> None:
+    width = 1600
+    height = 900
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#222"/></marker></defs>',
+        '<text x="52" y="56" font-family="Arial, sans-serif" font-size="30" font-weight="700">SystolicArray Block and Verification Diagram</text>',
+        '<text x="52" y="84" font-family="Arial, sans-serif" font-size="15" fill="#555">One self-contained UVM harness drives flattened INT8 matrices into the RTL and checks every INT32 output element.</text>',
+    ]
+
+    def box(x: int, y: int, w: int, h: int, title: str, body: str, fill: str) -> None:
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{fill}" stroke="#222" stroke-width="2"/>')
+        parts.append(f'<text x="{x + 16}" y="{y + 31}" font-family="Arial, sans-serif" font-size="18" font-weight="700">{html.escape(title)}</text>')
+        for line_index, line in enumerate(body.split("\\n")):
+            parts.append(f'<text x="{x + 16}" y="{y + 58 + line_index * 22}" font-family="Arial, sans-serif" font-size="14" fill="#222">{html.escape(line)}</text>')
+
+    def arrow(x1: int, y1: int, x2: int, y2: int, label: str = "") -> None:
+        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#222" stroke-width="2.2" marker-end="url(#arrow)"/>')
+        if label:
+            parts.append(f'<text x="{(x1 + x2) / 2 - 42:.1f}" y="{(y1 + y2) / 2 - 10:.1f}" font-family="Arial, sans-serif" font-size="13" fill="#222">{html.escape(label)}</text>')
+
+    box(62, 142, 230, 126, "Sequence", "Directed cases\\n300 random cases\\nstart pulse per item", "#eef5f1")
+    box(62, 354, 230, 126, "Reference Model", "Signed INT32 C=A*B\\nfull 4x4 matrix\\nlatency index = 9", "#fff7df")
+    box(360, 142, 230, 126, "Driver + BFM", "packs A/B matrices\\ndrives start/clear\\nwaits for done", "#eaf2ff")
+    box(650, 120, 250, 160, "Input Capture", "a_matrix[127:0]\\nb_matrix[127:0]\\nlatch on start\\nclear PE accumulators", "#eef5f1")
+    box(958, 120, 250, 160, "Skew Feeders", "A[row][k] enters west\\nB[k][col] enters north\\ncycle-aligned wavefront", "#f4f4f4")
+    box(650, 370, 558, 198, "Generated PE Array", "16 identical PEs arranged as a 4x4 mesh\\nA shifts east, B shifts south, accumulators stay local\\npe_active[row*4+col] mirrors each MAC enable\\nSKIP_PE_BUG disables only PE(3,3)", "#fff7df")
+    box(1270, 208, 242, 144, "Output Matrix", "c_matrix[511:0]\\n16 signed INT32 cells\\ndone after final PE settles", "#eef7fb")
+    box(1270, 444, 242, 126, "Monitor", "samples on done\\nunpacks A/B/C\\npublishes transaction", "#eaf2ff")
+    box(958, 650, 250, 134, "Coverage", "case type\\nINT8 corner classes\\noutput value classes", "#f7eef1")
+    box(650, 650, 250, 134, "Scoreboard", "checks all 16 C cells\\nchecks latency\\nreports UVM errors", "#f7eef1")
+    box(360, 650, 230, 134, "Verdict", "No errors -- passed\\nor Failed testbench\\nwritten after report_phase", "#eef5f1")
+
+    arrow(292, 205, 360, 205, "seq_item")
+    arrow(590, 205, 650, 200, "A/B")
+    arrow(900, 200, 958, 200, "latched")
+    arrow(1208, 200, 1270, 280, "C")
+    arrow(1390, 352, 1390, 444, "done")
+    arrow(1270, 506, 1208, 716)
+    arrow(1270, 506, 900, 716)
+    arrow(650, 716, 590, 716)
+    arrow(292, 416, 650, 716, "expected")
+    arrow(1208, 466, 1270, 280, "outputs")
+    arrow(958, 720, 900, 720)
+
+    parts.append('<text x="650" y="610" font-family="Arial, sans-serif" font-size="14" fill="#555">RTL boundary: input capture, skew feeders, PE mesh, output matrix, controller.</text>')
+    parts.append('<text x="650" y="632" font-family="Arial, sans-serif" font-size="14" fill="#555">Verification boundary: UVM sequence, driver/BFM, monitor, scoreboard, coverage.</text>')
+    parts.append("</svg>")
+    path.write_text("\n".join(parts))
+
+
+def render_schedule(path: Path) -> None:
+    width = 1420
+    height = 1000
+    left = 118
+    top = 176
+    cell_w = 94
+    cell_h = 38
+    row_gap = 6
+    cycles = range(10)
+    parts = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
+        '<text x="48" y="54" font-family="Arial, sans-serif" font-size="30" font-weight="700">PE Activation Schedule</text>',
+        '<text x="48" y="82" font-family="Arial, sans-serif" font-size="15" fill="#555">Each PE performs four MACs. Product k is valid when cycle_count - row - col = k.</text>',
+        '<text x="48" y="106" font-family="Arial, sans-serif" font-size="15" fill="#555">The final bottom-right product lands at cycle index 9.</text>',
+    ]
+
+    for cycle in cycles:
+        x = left + cycle * cell_w
+        fill = "#eef7fb" if cycle == 9 else "#f7f7f7"
+        parts.append(f'<rect x="{x}" y="{top - 48}" width="{cell_w}" height="34" fill="{fill}" stroke="#222" stroke-width="1"/>')
+        parts.append(f'<text x="{x + 36}" y="{top - 25}" font-family="Arial, sans-serif" font-size="15" font-weight="700">{cycle}</text>')
+
+    parts.append(f'<text x="{left + 10 * cell_w + 24}" y="{top - 25}" font-family="Arial, sans-serif" font-size="14" fill="#555">cycle_count</text>')
+
+    for row in range(4):
+        for col in range(4):
+            lane = row * 4 + col
+            y = top + lane * (cell_h + row_gap)
+            parts.append(f'<text x="48" y="{y + 25}" font-family="Arial, sans-serif" font-size="14" fill="#111">PE {row},{col}</text>')
+            for cycle in cycles:
+                x = left + cycle * cell_w
+                k = cycle - row - col
+                active = 0 <= k < 4
+                fill = "#fff2c7" if active else "#ffffff"
+                if cycle == 9:
+                    fill = "#d7efe4" if active else "#eef7fb"
+                parts.append(f'<rect x="{x}" y="{y}" width="{cell_w}" height="{cell_h}" fill="{fill}" stroke="#bbb" stroke-width="1"/>')
+                if active:
+                    parts.append(f'<text x="{x + 26}" y="{y + 24}" font-family="Arial, sans-serif" font-size="13" fill="#111">k={k}</text>')
+            first = row + col
+            last = row + col + 3
+            parts.append(f'<text x="{left + 10 * cell_w + 24}" y="{y + 25}" font-family="Arial, sans-serif" font-size="13" fill="#333">active {first}..{last}</text>')
+
+    legend_y = top + 16 * (cell_h + row_gap) + 26
+    parts.append(f'<rect x="{left}" y="{legend_y}" width="28" height="18" fill="#fff2c7" stroke="#aaa"/>')
+    parts.append(f'<text x="{left + 38}" y="{legend_y + 15}" font-family="Arial, sans-serif" font-size="14" fill="#333">MAC active for product k</text>')
+    parts.append(f'<rect x="{left + 270}" y="{legend_y}" width="28" height="18" fill="#d7efe4" stroke="#aaa"/>')
+    parts.append(f'<text x="{left + 308}" y="{legend_y + 15}" font-family="Arial, sans-serif" font-size="14" fill="#333">final bottom-right product at cycle 9</text>')
+    parts.append(f'<text x="{left}" y="{legend_y + 54}" font-family="Arial, sans-serif" font-size="14" fill="#555">The UVM monitor samples one clock later on done, so the final C matrix is visible after all nonblocking PE updates settle.</text>')
+    parts.append("</svg>")
+    path.write_text("\n".join(parts))
+
+
 def convert_with_sips(source: Path, dest: Path, fmt: str) -> None:
     if shutil.which("sips") is None:
         raise SystemExit("sips is required to render artifacts on this machine")
@@ -329,10 +439,16 @@ def main() -> None:
     write_csv(rows, CSV_OUT)
     render_waveforms(rows, WAVEFORM_SVG)
     render_datapath(DATAPATH_SVG)
+    render_block_diagram(BLOCK_DIAGRAM_SVG)
+    render_schedule(SCHEDULE_SVG)
     convert_with_sips(WAVEFORM_SVG, WAVEFORM_PNG, "png")
     convert_with_sips(DATAPATH_SVG, DATAPATH_PNG, "png")
+    convert_with_sips(BLOCK_DIAGRAM_SVG, BLOCK_DIAGRAM_PNG, "png")
+    convert_with_sips(SCHEDULE_SVG, SCHEDULE_PNG, "png")
     WAVEFORM_SVG.unlink(missing_ok=True)
     DATAPATH_SVG.unlink(missing_ok=True)
+    BLOCK_DIAGRAM_SVG.unlink(missing_ok=True)
+    SCHEDULE_SVG.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
