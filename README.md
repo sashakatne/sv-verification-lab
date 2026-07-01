@@ -121,20 +121,32 @@ beside them in the same testbench.
 - **Verification**: Run `do run.do`. The checked-in transcript and VCD are from a PSU farm Questa 2021.3_1 run; `waveforms.png` is rendered from that VCD, and `circuit_diagram.png` shows the four parameterized lanes that generated it.
 
 ### 16. MAC Processing Element
-A dual-mode low-precision MAC PE for AI datapath verification: INT8 mode accumulates signed products into a saturating INT32 accumulator, while BF16 mode flushes input denormals, promotes products to FP32, and accumulates with round-to-nearest-even behavior.
+A dual-mode low-precision MAC PE for AI datapath verification. The same
+16-bit operand ports serve signed INT8 mode and BF16 mode, letting the UVM
+environment stress integer saturation, floating-point specials, sticky flags,
+clear behavior, and mode switching through one compact processing element.
 
 - **Folder**: MacPE
 - **Files**: `mac_pe.sv`, `mac_pe_bfm.sv`, `mac_pe_pkg.sv`, UVM class files, `top.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `waveform_samples.csv`, `waveforms.png`, `datapath.png`, `transcript.txt`, `transcript_negative.txt`, `transcript_red.txt`
-- **Testbench**: UVM environment with directed INT8 saturation, directed BF16 finite/special-value checks, constrained-random mixed-mode streams, scoreboard self-checks, and three covergroups for mode/control sequencing, INT8 corners, and BF16 classes.
-- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SAT_SKIP_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 857 UVM errors.
+- **Architecture**: `mode=0` uses signed `a[7:0] * b[7:0]` and accumulates into a signed saturating INT32 register with `sat_flag`; `mode=1` treats both 16-bit operands as BF16, flushes denormals to zero, promotes products to FP32, accumulates with round-to-nearest-even behavior, and tracks floating-point exceptional classes with `fp_flag`.
+- **Interface**: `valid_in` accepts one MAC beat, `clear` synchronously clears the accumulator and sticky flags, `valid_out` pulses on both MAC updates and observable clear beats, and `acc` exposes the current INT32 or FP32-bit accumulator state.
+- **Testbench**: UVM sequence coverage includes directed INT8 saturation and signed-corner cases, directed BF16 finite/NaN/infinity/denormal cases, clear/control sequencing, and constrained-random mixed-mode streams. The scoreboard checks INT8 exactly and checks BF16 against a `shortreal` reference with one-ULP tolerance for finite results plus class/sign checks for specials.
+- **Artifacts**: `datapath.png` documents the dual-mode PE datapath, `waveforms.png` is rendered from clean-run VCD samples, and `waveform_samples.csv` captures selected `valid_out` transactions used for the plot.
+- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SAT_SKIP_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 857 UVM errors. `transcript_red.txt` is the committed TDD RED checkpoint against the initial stub.
 
 ### 17. Systolic Array
-A 4x4 signed INT8 output-stationary systolic matrix-multiply tile. A generated PE grid skews A rows east and B columns south, accumulating each signed INT32 output element locally before exposing the flattened C matrix.
+A 4x4 signed INT8 output-stationary systolic matrix-multiply tile. A generated
+PE grid skews A rows east and B columns south, accumulating each signed INT32
+output element locally before exposing the flattened C matrix.
 
 - **Folder**: SystolicArray
 - **Files**: `systolic_array.sv`, `systolic_array_bfm.sv`, `systolic_array_pkg.sv`, UVM class files, `top.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `block_diagram.png`, `schedule.png`, `waveform_samples.csv`, `waveforms.png`, `datapath.png`, `transcript.txt`, `transcript_negative.txt`, `transcript_red.txt`
-- **Testbench**: UVM environment with zero, identity, signed-corner, alternating-sign, and 300 constrained-random 4x4 matrix cases. The scoreboard recomputes the full signed INT32 reference matrix and checks every output plus final latency.
-- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SKIP_PE_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 296 UVM errors.
+- **Architecture**: `start` latches one row-major flattened A/B matrix pair. A wavefront feeder injects `A[row][k]` from the west and `B[k][col]` from the north. PE `(row,col)` performs product `k = cycle_count - row - col` when `0 <= k < 4`, accumulating locally into `C[row][col]`.
+- **Interface**: `busy` stays high while the wavefront is active, `cycle_count` advances through the final index `9`, `done` pulses after the final bottom-right PE update settles, and `pe_active[15:0]` exposes the PE enable mask for waveform and coverage evidence.
+- **Matrix Layout**: A, B, and C use row-major flattening: `((row*N + col)*WIDTH) +: WIDTH`. The driver, monitor, RTL, and scoreboard all use the same convention, so every checked output cell maps back to the expected matrix coordinate.
+- **Testbench**: UVM sequence coverage includes zero, identity, signed-corner, alternating-sign, and 300 constrained-random matrix cases. The scoreboard recomputes all 16 signed INT32 output elements and checks the final latency; covergroups track matrix case class, signed INT8 input value classes, output value classes, output positions, and final PE activity.
+- **Artifacts**: `block_diagram.png` shows the RTL and UVM verification boundaries, `datapath.png` expands the 4x4 PE grid, `schedule.png` documents PE activation by `cycle_count`, `waveforms.png` is rendered from the clean farm VCD, and `waveform_samples.csv` records 3,652 clock samples with 304 checked `done` pulses.
+- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SKIP_PE_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 296 UVM errors. `transcript_red.txt` is the committed TDD RED checkpoint against the initial stub.
 
 ## Verification
 
