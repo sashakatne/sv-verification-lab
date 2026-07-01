@@ -317,53 +317,93 @@ def render_datapath(path: Path) -> None:
 
 
 def render_block_diagram(path: Path) -> None:
-    width = 1600
-    height = 900
+    width = 1800
+    height = 1080
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         f'<rect x="0" y="0" width="{width}" height="{height}" fill="#ffffff"/>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#222"/></marker></defs>',
-        '<text x="52" y="56" font-family="Arial, sans-serif" font-size="30" font-weight="700">SystolicArray Block and Verification Diagram</text>',
-        '<text x="52" y="84" font-family="Arial, sans-serif" font-size="15" fill="#555">One self-contained UVM harness drives flattened INT8 matrices into the RTL and checks every INT32 output element.</text>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#1f2937"/></marker></defs>',
+        '<text x="60" y="58" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">SystolicArray Architecture and Verification Flow</text>',
+        '<text x="60" y="88" font-family="Arial, sans-serif" font-size="16" fill="#475569">4x4 signed INT8 output-stationary matrix multiply, checked by a self-contained UVM environment.</text>',
     ]
 
-    def box(x: int, y: int, w: int, h: int, title: str, body: str, fill: str) -> None:
-        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{fill}" stroke="#222" stroke-width="2"/>')
-        parts.append(f'<text x="{x + 16}" y="{y + 31}" font-family="Arial, sans-serif" font-size="18" font-weight="700">{html.escape(title)}</text>')
+    def group(x: int, y: int, w: int, h: int, title: str) -> None:
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>')
+        parts.append(f'<text x="{x + 18}" y="{y + 30}" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#475569">{html.escape(title.upper())}</text>')
+
+    def box(x: int, y: int, w: int, h: int, title: str, body: str, fill: str = "#ffffff", stroke: str = "#334155") -> None:
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="6" fill="{fill}" stroke="{stroke}" stroke-width="1.7"/>')
+        parts.append(f'<text x="{x + 16}" y="{y + 30}" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">{html.escape(title)}</text>')
         for line_index, line in enumerate(body.split("\\n")):
-            parts.append(f'<text x="{x + 16}" y="{y + 58 + line_index * 22}" font-family="Arial, sans-serif" font-size="14" fill="#222">{html.escape(line)}</text>')
+            parts.append(f'<text x="{x + 16}" y="{y + 58 + line_index * 22}" font-family="Arial, sans-serif" font-size="14" fill="#334155">{html.escape(line)}</text>')
 
-    def arrow(x1: int, y1: int, x2: int, y2: int, label: str = "") -> None:
-        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#222" stroke-width="2.2" marker-end="url(#arrow)"/>')
+    def arrow(x1: int, y1: int, x2: int, y2: int, label: str = "", dashed: bool = False) -> None:
+        dash = ' stroke-dasharray="7 7"' if dashed else ""
+        parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#1f2937" stroke-width="2.1"{dash} marker-end="url(#arrow)"/>')
         if label:
-            parts.append(f'<text x="{(x1 + x2) / 2 - 42:.1f}" y="{(y1 + y2) / 2 - 10:.1f}" font-family="Arial, sans-serif" font-size="13" fill="#222">{html.escape(label)}</text>')
+            parts.append(f'<text x="{(x1 + x2) / 2 - 34:.1f}" y="{(y1 + y2) / 2 - 9:.1f}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#475569">{html.escape(label)}</text>')
 
-    box(62, 142, 230, 126, "Sequence", "Directed cases\\n300 random cases\\nstart pulse per item", "#eef5f1")
-    box(62, 354, 230, 126, "Reference Model", "Signed INT32 C=A*B\\nfull 4x4 matrix\\nlatency index = 9", "#fff7df")
-    box(360, 142, 230, 126, "Driver + BFM", "packs A/B matrices\\ndrives start/clear\\nwaits for done", "#eaf2ff")
-    box(650, 120, 250, 160, "Input Capture", "a_matrix[127:0]\\nb_matrix[127:0]\\nlatch on start\\nclear PE accumulators", "#eef5f1")
-    box(958, 120, 250, 160, "Skew Feeders", "A[row][k] enters west\\nB[k][col] enters north\\ncycle-aligned wavefront", "#f4f4f4")
-    box(650, 370, 558, 198, "Generated PE Array", "16 identical PEs arranged as a 4x4 mesh\\nA shifts east, B shifts south, accumulators stay local\\npe_active[row*4+col] mirrors each MAC enable\\nSKIP_PE_BUG disables only PE(3,3)", "#fff7df")
-    box(1270, 208, 242, 144, "Output Matrix", "c_matrix[511:0]\\n16 signed INT32 cells\\ndone after final PE settles", "#eef7fb")
-    box(1270, 444, 242, 126, "Monitor", "samples on done\\nunpacks A/B/C\\npublishes transaction", "#eaf2ff")
-    box(958, 650, 250, 134, "Coverage", "case type\\nINT8 corner classes\\noutput value classes", "#f7eef1")
-    box(650, 650, 250, 134, "Scoreboard", "checks all 16 C cells\\nchecks latency\\nreports UVM errors", "#f7eef1")
-    box(360, 650, 230, 134, "Verdict", "No errors -- passed\\nor Failed testbench\\nwritten after report_phase", "#eef5f1")
+    def path_arrow(points: list[tuple[int, int]], label: str = "", dashed: bool = False) -> None:
+        dash = ' stroke-dasharray="7 7"' if dashed else ""
+        point_text = " ".join(f"{x},{y}" for x, y in points)
+        parts.append(f'<polyline points="{point_text}" fill="none" stroke="#1f2937" stroke-width="2.1"{dash} marker-end="url(#arrow)"/>')
+        if label:
+            x, y = points[len(points) // 2]
+            parts.append(f'<text x="{x + 8}" y="{y - 8}" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#475569">{html.escape(label)}</text>')
 
-    arrow(292, 205, 360, 205, "seq_item")
-    arrow(590, 205, 650, 200, "A/B")
-    arrow(900, 200, 958, 200, "latched")
-    arrow(1208, 200, 1270, 280, "C")
-    arrow(1390, 352, 1390, 444, "done")
-    arrow(1270, 506, 1208, 716)
-    arrow(1270, 506, 900, 716)
-    arrow(650, 716, 590, 716)
-    arrow(292, 416, 650, 716, "expected")
-    arrow(1208, 466, 1270, 280, "outputs")
-    arrow(958, 720, 900, 720)
+    group(60, 128, 380, 280, "Stimulus")
+    group(500, 128, 860, 600, "RTL DUT")
+    group(60, 780, 1300, 220, "Checking")
+    group(1410, 128, 320, 872, "Evidence")
 
-    parts.append('<text x="650" y="610" font-family="Arial, sans-serif" font-size="14" fill="#555">RTL boundary: input capture, skew feeders, PE mesh, output matrix, controller.</text>')
-    parts.append('<text x="650" y="632" font-family="Arial, sans-serif" font-size="14" fill="#555">Verification boundary: UVM sequence, driver/BFM, monitor, scoreboard, coverage.</text>')
+    box(100, 184, 290, 88, "Sequence", "zero / identity / corners\\nalternating + random", "#eefbf4", "#16a34a")
+    box(100, 312, 290, 88, "Driver + BFM", "pack row-major matrices\\ndrive start, wait done", "#eff6ff", "#2563eb")
+    box(100, 826, 290, 96, "Reference Model", "signed INT32 C = A*B\\nlatency index = 9", "#fff7ed", "#f59e0b")
+
+    box(540, 220, 168, 116, "Input", "A[127:0]\\nB[127:0]\\nlatch on start", "#eefbf4", "#16a34a")
+    box(748, 220, 168, 116, "Skew", "A rows east\\nB columns south\\nwavefront feed", "#f8fafc", "#64748b")
+    box(1212, 220, 108, 116, "Output", "C[511:0]\\ndone pulse", "#ecfeff", "#0891b2")
+    box(748, 520, 288, 116, "Controller", "cycle_count 0..9\\nbusy, done_pending\\npe_active mask", "#f8fafc", "#64748b")
+
+    parts.append('<rect x="956" y="174" width="216" height="216" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>')
+    parts.append('<text x="982" y="204" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0f172a">4x4 PE Mesh</text>')
+    parts.append('<text x="982" y="228" font-family="Arial, sans-serif" font-size="13" fill="#334155">output-stationary accumulators</text>')
+    for row in range(4):
+        for col in range(4):
+            x = 986 + col * 40
+            y = 254 + row * 32
+            fill = "#fef3c7" if (row + col) % 2 == 0 else "#e0f2fe"
+            parts.append(f'<rect x="{x}" y="{y}" width="32" height="24" rx="3" fill="{fill}" stroke="#475569" stroke-width="1"/>')
+            parts.append(f'<text x="{x + 8}" y="{y + 16}" font-family="Arial, sans-serif" font-size="10" fill="#0f172a">{row},{col}</text>')
+    parts.append('<text x="982" y="402" font-family="Arial, sans-serif" font-size="13" fill="#334155">k = cycle - row - col</text>')
+    parts.append('<text x="982" y="424" font-family="Arial, sans-serif" font-size="13" fill="#334155">bug hook: PE(3,3)</text>')
+
+    box(540, 826, 190, 96, "Monitor", "sample on done\\nunpack A/B/C", "#eff6ff", "#2563eb")
+    box(770, 826, 210, 96, "Scoreboard", "check 16 C cells\\ncheck latency", "#fdf2f8", "#db2777")
+    box(1020, 826, 190, 96, "Coverage", "case classes\\nvalues + results", "#fdf2f8", "#db2777")
+    box(1248, 826, 82, 96, "Verdict", "PASS\\nFAIL", "#eefbf4", "#16a34a")
+
+    box(1450, 196, 240, 112, "Clean Run", "0 UVM errors\\n100% covergroups\\npassed testbench", "#eefbf4", "#16a34a")
+    box(1450, 350, 240, 112, "Negative Run", "SKIP_PE_BUG\\n296 UVM errors\\nfailed testbench", "#fff1f2", "#e11d48")
+    box(1450, 504, 240, 112, "Artifacts", "waveform_samples.csv\\nwaveforms.png\\ndatapath + schedule", "#eff6ff", "#2563eb")
+    box(1450, 658, 240, 112, "Docs", "design.md\\nMANIFEST.txt\\nREADME entry", "#f8fafc", "#64748b")
+
+    arrow(245, 272, 245, 312, "tx")
+    arrow(390, 356, 540, 278, "A/B")
+    arrow(708, 278, 748, 278)
+    arrow(916, 278, 956, 278)
+    arrow(1172, 278, 1212, 278)
+    path_arrow([(1266, 336), (1266, 760), (635, 760), (635, 826)], "done + C")
+    arrow(730, 874, 770, 874)
+    arrow(980, 874, 1020, 874)
+    arrow(1210, 874, 1248, 874)
+    path_arrow([(390, 874), (480, 874), (480, 952), (875, 952), (875, 922)], "expected")
+    path_arrow([(892, 520), (892, 448), (1064, 448), (1064, 390)], "", dashed=True)
+    path_arrow([(892, 520), (892, 448), (624, 448), (624, 336)], "", dashed=True)
+    path_arrow([(1330, 874), (1410, 874), (1410, 252), (1450, 252)])
+
+    parts.append('<text x="540" y="688" font-family="Arial, sans-serif" font-size="14" fill="#475569">Data path is left-to-right inside the RTL.</text>')
+    parts.append('<text x="540" y="712" font-family="Arial, sans-serif" font-size="14" fill="#475569">Verification feedback stays below the DUT and feeds the committed evidence panel.</text>')
     parts.append("</svg>")
     path.write_text("\n".join(parts))
 
