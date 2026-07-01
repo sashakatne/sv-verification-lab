@@ -1,0 +1,100 @@
+MacPE Verification Manifest
+===========================
+
+Module
+------
+MacPE: dual-mode INT8/BF16 multiply-accumulate processing element.
+
+Host and Toolchain
+------------------
+Host: mo.ece.pdx.edu
+Questa path: /pkgs/mentor/questa/2021.3_1/questasim/bin
+License: MGLS_LICENSE_FILE=1717@mentor-lic.cecs.pdx.edu
+Mode: MTI_VCO_MODE=64
+
+Clean Farm Run
+--------------
+Start UTC: 2026-07-01T00-07-42Z
+End UTC:   2026-07-01T00:08:40Z
+Run dir:   ~/claude-runs/2026-07-01T00-07-42Z_macpe-sim
+Command:
+  export PATH=/pkgs/mentor/questa/2021.3_1/questasim/bin:$PATH
+  export MGLS_LICENSE_FILE=1717@mentor-lic.cecs.pdx.edu
+  export MTI_VCO_MODE=64
+  cd ~/claude-runs/2026-07-01T00-07-42Z_macpe-sim
+  vsim -c -do 'do run.do; quit -f' > transcript.txt 2>&1
+  cat mac_pe_verdict.txt >> transcript.txt
+Verdict: PASS
+Transcript: transcript.txt
+Compile/vopt: every stage reports Errors: 0, Warnings: 0
+UVM summary: UVM_ERROR: 0, UVM_FATAL: 0
+Final transcript line: No errors -- passed testbench
+Coverage: TOTAL COVERGROUP COVERAGE: 100.00% across 3 covergroup types
+
+Seeded Negative Run
+-------------------
+Start UTC: 2026-07-01T00-08-50Z
+End UTC:   2026-07-01T00:09:25Z
+Run dir:   ~/claude-runs/2026-07-01T00-08-50Z_macpe-negative
+Command:
+  sed -i 's/^vlog -source -lint mac_pe.sv/# vlog -source -lint mac_pe.sv/; s/^# vlog -source -lint +define+SAT_SKIP_BUG mac_pe.sv/vlog -source -lint +define+SAT_SKIP_BUG mac_pe.sv/' run.do
+  export PATH=/pkgs/mentor/questa/2021.3_1/questasim/bin:$PATH
+  export MGLS_LICENSE_FILE=1717@mentor-lic.cecs.pdx.edu
+  export MTI_VCO_MODE=64
+  vsim -c -do 'do run.do; quit -f' > transcript_negative.txt 2>&1
+  cat mac_pe_verdict.txt >> transcript_negative.txt
+Verdict: EXPECTED FAIL
+Transcript: transcript_negative.txt
+Compile/vopt: every stage reports Errors: 0, Warnings: 0
+UVM summary: UVM_ERROR: 857, UVM_FATAL: 0
+Final transcript line: Failed testbench
+Caveat: lower coverage is expected because the seeded saturation bug changes
+the observed sticky flag behavior before the full clean coverage target closes.
+
+RED Checkpoint Run
+------------------
+Start UTC: 2026-06-30T23-58-28Z
+End UTC:   2026-06-30T23:59:03Z
+Run dir:   ~/claude-runs/2026-06-30T23-58-28Z_macpe-red
+Verdict: EXPECTED FAIL against the initial stub DUT
+Transcript: transcript_red.txt
+Compile/vopt: every stage reports Errors: 0, Warnings: 0
+UVM summary: UVM_ERROR: 149085, UVM_FATAL: 0
+
+Artifacts
+---------
+Committed evidence files:
+  mac_pe.sv
+  mac_pe_bfm.sv
+  mac_pe_pkg.sv
+  transaction.sv
+  sequence.sv
+  sequencer.sv
+  driver.sv
+  monitor.sv
+  scoreboard.sv
+  coverage.sv
+  agent.sv
+  environment.sv
+  test.sv
+  top.sv
+  run.do
+  design.md
+  MANIFEST.txt
+  make_artifacts.py
+  transcript.txt
+  transcript_negative.txt
+  transcript_red.txt
+  waveform_samples.csv
+  waveforms.png
+  datapath.png
+
+Generated during clean farm run but not committed:
+  mac_pe_waveforms.vcd
+  mac_pe.ucdb
+
+Caveats
+-------
+The checked-in transcript has one post-simulator verdict line appended from
+mac_pe_verdict.txt after Questa exits, so the artifact physically ends with the
+repo-standard pass/fail line while preserving the full simulator output above it.

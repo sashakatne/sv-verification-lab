@@ -120,6 +120,14 @@ beside them in the same testbench.
 - **Testbench**: `top` in `timing_gotchas_tb.sv` checks that both gotchas trigger and both clean paths stay quiet.
 - **Verification**: Run `do run.do`. The checked-in transcript and VCD are from a PSU farm Questa 2021.3_1 run; `waveforms.png` is rendered from that VCD, and `circuit_diagram.png` shows the four parameterized lanes that generated it.
 
+### 16. MAC Processing Element
+A dual-mode low-precision MAC PE for AI datapath verification: INT8 mode accumulates signed products into a saturating INT32 accumulator, while BF16 mode flushes input denormals, promotes products to FP32, and accumulates with round-to-nearest-even behavior.
+
+- **Folder**: MacPE
+- **Files**: `mac_pe.sv`, `mac_pe_bfm.sv`, `mac_pe_pkg.sv`, UVM class files, `top.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `waveform_samples.csv`, `waveforms.png`, `datapath.png`, `transcript.txt`, `transcript_negative.txt`, `transcript_red.txt`
+- **Testbench**: UVM environment with directed INT8 saturation, directed BF16 finite/special-value checks, constrained-random mixed-mode streams, scoreboard self-checks, and three covergroups for mode/control sequencing, INT8 corners, and BF16 classes.
+- **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SAT_SKIP_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 857 UVM errors.
+
 ## Verification
 
 ### Assertions

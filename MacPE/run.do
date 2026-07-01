@@ -36,3 +36,9 @@ vcover report mac_pe.ucdb
 vcover report mac_pe.ucdb -cvg -details
 
 add wave -position insertpoint sim:/top/DUT/*
+
+if {[file exists mac_pe_verdict.txt]} {
+    set verdict_file [open mac_pe_verdict.txt r]
+    puts [string trim [read $verdict_file]]
+    close $verdict_file
+}

@@ -43,14 +43,23 @@ class mac_pe_test extends uvm_test;
     function void report_phase(uvm_phase phase);
         uvm_report_server svr;
         int err_count;
+        int verdict_fd;
+        string verdict;
         super.report_phase(phase);
         svr = uvm_report_server::get_server();
         err_count = svr.get_severity_count(UVM_ERROR)
                   + svr.get_severity_count(UVM_FATAL);
         if (err_count == 0)
-            $display("No errors -- passed testbench");
+            verdict = "No errors -- passed testbench";
         else
-            $display("Failed testbench");
+            verdict = "Failed testbench";
+
+        $display("%s", verdict);
+        verdict_fd = $fopen("mac_pe_verdict.txt", "w");
+        if (verdict_fd != 0) begin
+            $fdisplay(verdict_fd, "%s", verdict);
+            $fclose(verdict_fd);
+        end
     endfunction : report_phase
 
 endclass : mac_pe_test
