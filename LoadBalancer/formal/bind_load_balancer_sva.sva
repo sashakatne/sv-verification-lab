@@ -1,0 +1,9 @@
+// Attaches the SVA checker to the DUT for formal proof. Same bind used in
+// simulation (top.sv), isolated here so the formal filelist stays RTL-only and
+// the DUT is never edited to carry assertions. `.*` connects every checker port
+// - ports plus the DUT-internal grant/accept/elig/rr_ptr/grant_idx - by name.
+bind load_balancer load_balancer_sva #(
+    .N            (N),
+    .WEIGHT_WIDTH (WEIGHT_WIDTH),
+    .OCC_WIDTH    (OCC_WIDTH)
+) sva_inst (.*);

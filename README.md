@@ -2,6 +2,18 @@
 
 Welcome to my SystemVerilog Playground! This repository contains a collection of SystemVerilog modules designed for various digital design and verification tasks. Below is an overview of the key modules and their functionalities.
 
+## Featured Design Verification Evidence
+
+| Project | Hiring Signal | Proof |
+| --- | --- | --- |
+| [MacPE](MacPE/) | Dual-mode INT8/BF16 MAC processing element for AI datapath verification | UVM scoreboard, directed/random tests, clean Questa run with 0 UVM errors/fatals and 100.00% covergroup coverage, waveform/datapath artifacts, and `SAT_SKIP_BUG` negative regression |
+| [SystolicArray](SystolicArray/) | 4x4 signed INT8 output-stationary matrix-multiply tile | Full-matrix UVM scoreboard, clean Questa run with 0 UVM errors/fatals and 100.00% covergroup coverage, block/datapath/schedule diagrams, waveform evidence, and `SKIP_PE_BUG` negative regression |
+| [CascadedTinyALU/UVM](CascadedTinyALU/UVM/) | Reusable UVM testbench architecture | Agent, sequencer, driver, monitor, scoreboard, BFM, coverage subscriber, 10,000 randomized transactions, 0 UVM errors/fatals, and 97.74% covergroup coverage |
+| [SimpleBusMultiMemory](SimpleBusMultiMemory/) | Interface/modport and generated-memory verification | Processor/memory modports, generated memory windows, shared bus timing checks, 4- and 8-memory regressions, and waveform/report artifacts |
+| [LoadBalancer](LoadBalancer/) | Multi-policy request distributor (round-robin / weighted / least-loaded) | UVM shadow-model scoreboard (5 tests, 0 mismatches, 100.00% coverage) **and** VC Formal proof (17 SVA properties proven non-vacuously), with a 6-mutation bug-injection matrix that falsifies each mapped property on both sim and formal, gated by `check_evidence.sh` |
+
+Each featured project includes a `MANIFEST.txt` with the exact farm/toolchain evidence behind the resume claims. The strongest resume hooks are clean simulator transcripts, explicit coverage closure, and seeded negative runs that prove the testbench catches real injected bugs.
+
 ## Main Highlights
 
 ### 1. Arbiter
@@ -147,6 +159,19 @@ output element locally before exposing the flattened C matrix.
 - **Testbench**: UVM sequence coverage includes zero, identity, signed-corner, alternating-sign, and 300 constrained-random matrix cases. The scoreboard recomputes all 16 signed INT32 output elements and checks the final latency; covergroups track matrix case class, signed INT8 input value classes, output value classes, output positions, and final PE activity.
 - **Artifacts**: `block_diagram.png` shows the RTL and UVM verification boundaries, `datapath.png` expands the 4x4 PE grid, `schedule.png` documents PE activation by `cycle_count`, `waveforms.png` is rendered from the clean farm VCD, and `waveform_samples.csv` records 3,652 clock samples with 304 checked `done` pulses.
 - **Verification**: Run `do run.do`. The clean PSU farm transcript ends with `No errors -- passed testbench`, reports `UVM_ERROR: 0` and `UVM_FATAL: 0`, and closes all three covergroups at 100.00%. The commented `+define+SKIP_PE_BUG` line provides the checked-in negative run, which ends with `Failed testbench` and 296 UVM errors. `transcript_red.txt` is the committed TDD RED checkpoint against the initial stub.
+
+### 18. Load Balancer
+A multi-policy request distributor: one upstream request stream is routed to one
+of `N=4` backend "servers" by a runtime-selectable policy - round-robin,
+weighted round-robin, or least-loaded - honoring per-backend backpressure and
+tracking outstanding work per backend. A hardware analog of a systems-design
+load balancer, verified in both simulation and formal.
+
+- **Folder**: LoadBalancer
+- **Files**: `load_balancer.sv`, `load_balancer_bfm.sv`, `load_balancer_pkg.sv`, `lb_ref.svh`, `load_balancer_sva.sva`, UVM class files, `top.sv`, `run.do`, `design.md`, `MANIFEST.txt`, `make_artifacts.py`, `block_diagram.png`, `waveforms.png`, `waveform_samples.csv`, `transcript.txt`, `transcript_negative.txt`, `formal/` (VC Formal tcl, bind, filelist, evidence scripts, `logs/*.log`)
+- **Architecture**: Selection is combinational; state is registered. Each cycle a one-hot `grant` is computed from `policy`, the `be_ready` backpressure mask, and registered state (`rr_ptr`, WRR deficit `credit[N]`, saturating `occ[N]`); the request/grant handshake gates the dispatch. Because `grant` never depends on `req_valid`, there is no combinational loop and every policy is a pure function of state.
+- **Testbenches**: `top.sv` instantiates the BFM + DUT and binds `load_balancer_sva`. The UVM environment runs five sequences (one per policy, a mixed-policy burst, and a backpressure stress with a directed saturation pile-up). A cycle-accurate shadow-model scoreboard keeps its own `rr_ptr`/`credit`/`occ`, predicts each grant from the shared `lb_ref.svh` golden reference, and checks `req_ready`, the one-hot dispatch, and every occupancy counter each cycle. Coverage crosses policy x ready-pattern x occupancy plus the handshake states.
+- **Verification**: Run `do run.do`. The clean PSU farm transcript compiles with `Errors: 0, Warnings: 0` across all 19 stages, runs 5 UVM tests with 0 scoreboard mismatches and 0 assertion failures, closes both covergroups at 100.00%, and ends with `No errors -- passed testbench`. In `formal/`, `vcf -batch -f fpv_run_lb.tcl` proves all 17 SVA properties non-vacuously with 0 falsified and 3 covers reached. Six `BUG_*` mutations each falsify their mapped property (`a_grant_onehot`, `a_grant_only_ready`, `a_occ_no_overflow`, `a_wrr_weight0_never`, `a_ll_picks_min`, `a_rr_bounded_fairness`); the committed `transcript_negative.txt` shows `BUG_LL_NOTMIN` flipping the sim verdict to `Failed testbench`. `formal/check_evidence.sh` machine-validates the whole bundle (clean falsified=0, every bug falsified>=1, 5 UVM tests clean, coverage 100.00%).
 
 ## Verification
 

@@ -1,0 +1,70 @@
+LoadBalancer - farm run provenance
+===================================
+
+Module: LoadBalancer (multi-policy request distributor, N=4)
+Host:   mo.ece.pdx.edu  (PSU ECE farm, ssh alias katnemo)
+Date:   2026-07-08 (UTC)
+
+Tools
+-----
+Simulation: QuestaSim-64 vsim 2021.3_1 Simulator 2021.08 (Aug 15 2021)
+Formal:     Synopsys VC Formal Version V-2023.12-SP2-3 for linux64
+License:    MGLS_LICENSE_FILE=1717@mentor-lic.cecs.pdx.edu, MTI_VCO_MODE=64
+Questa bin: /pkgs/mentor/questa/2021.3_1/questasim/bin
+VCF bin:    /pkgs/synopsys/current/bin
+
+Commands
+--------
+Clean simulation:
+  vsim -c -do "do run.do; quit -f" | tee transcript.txt
+Negative simulation (scoreboard/assertions catch the fault):
+  # run.do with the DUT recompiled as +define+BUG_LL_NOTMIN
+  vsim -c -do "do run_bug.do; quit -f" | tee transcript_negative.txt
+Clean formal proof:
+  cd formal && vcf -batch -f fpv_run_lb.tcl
+Bug-injected formal proofs (one per BUG_* define):
+  cd formal && LB_BUG=<BUG_NAME> vcf -batch -f fpv_run_lb_buginjected.tcl
+Evidence capture + validation:
+  cd formal && bash capture_evidence.sh && bash check_evidence.sh
+
+Results (this run)
+------------------
+Simulation (clean):
+  5 UVM tests, 0 mismatches each, 0 assertion failures, verdict
+  "No errors -- passed testbench". Coverage: 100.00% (both covergroups).
+    TEST lb_rr_test           cycles=4007 mismatched=0
+    TEST lb_wrr_test          cycles=4007 mismatched=0
+    TEST lb_ll_test           cycles=4007 mismatched=0
+    TEST lb_mixed_random_test cycles=4007 mismatched=0
+    TEST lb_backpressure_test cycles=4023 mismatched=0
+
+Simulation (negative, BUG_LL_NOTMIN): verdict "Failed testbench";
+  scoreboard flagged 1146 LL mismatches and RR/WRR stayed clean, localizing
+  the fault to the least-loaded policy exactly as designed.
+
+Formal (clean, fpv_run_lb.tcl):
+  17 assertions proven (all non-vacuous), 3 covers reached, 0 falsified.
+
+Formal (bug-injected traceability - each bug falsifies its mapped property):
+  BUG_DOUBLE_GRANT   -> a_grant_onehot        falsified
+  BUG_GRANT_NOTREADY -> a_grant_only_ready     falsified
+  BUG_OCC_OVERFLOW   -> a_occ_no_overflow      falsified (depth 13)
+  BUG_WRR_ZERO       -> a_wrr_weight0_never    falsified
+  BUG_LL_NOTMIN      -> a_ll_picks_min         falsified
+  BUG_RR_STUCK       -> a_rr_bounded_fairness  falsified
+
+Evidence gate:
+  formal/check_evidence.sh -> "OK (7 formal tails, 5 UVM tests clean, coverage 100.00%)"
+
+Notes / caveats
+---------------
+- A formal input assumption (m_policy_legal) constrains the config port to the
+  three defined policy encodings; the reserved 4th encoding (2'b11) is never
+  driven and is out of scope. The UVM driver satisfies this by construction.
+- p_rr_bounded_fairness is a bounded-safety (pointer-advance) reformulation of
+  the round-robin no-starvation liveness claim, and is clocked on posedge (the
+  edge the pointer registers on); all other properties sample negedge to match
+  the driver's posedge-NBA stimulus and the UVM monitor.
+- Committed evidence is curated: the formal log tails (formal/logs/*.log with
+  their EVIDENCE_VERDICT lines), the two transcripts, and the rendered
+  artifacts. Raw UCDB/wlf databases are not tracked.

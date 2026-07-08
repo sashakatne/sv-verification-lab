@@ -1,0 +1,733 @@
+Reading pref.tcl
+
+# 2021.3_1
+
+# do run.do
+# 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:18 on Jul 08,2026
+# vlog -source -lint load_balancer.sv 
+# -- Compiling module load_balancer
+# 
+# Top level modules:
+# 	load_balancer
+# End time: 16:40:18 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:18 on Jul 08,2026
+# vlog -source -lint load_balancer_pkg.sv 
+# -- Compiling package load_balancer_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) load_balancer_pkg.sv(9): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:19 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:19 on Jul 08,2026
+# vlog -source -lint -sv load_balancer_sva.sva 
+# -- Compiling module load_balancer_sva
+# 
+# Top level modules:
+# 	load_balancer_sva
+# End time: 16:40:19 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:19 on Jul 08,2026
+# vlog -source -lint load_balancer_bfm.sv 
+# -- Compiling interface load_balancer_bfm
+# -- Importing package load_balancer_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:20 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:20 on Jul 08,2026
+# vlog -source -lint top.sv 
+# -- Compiling module top
+# -- Importing package load_balancer_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# 
+# Top level modules:
+# 	top
+# End time: 16:40:20 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:20 on Jul 08,2026
+# vlog -source -lint transaction.sv 
+# ** Note: (vlog-2286) transaction.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package transaction_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:21 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:21 on Jul 08,2026
+# vlog -source -lint sequence.sv 
+# ** Note: (vlog-2286) sequence.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package sequence_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:21 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:21 on Jul 08,2026
+# vlog -source -lint sequencer.sv 
+# ** Note: (vlog-2286) sequencer.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package sequencer_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:22 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:22 on Jul 08,2026
+# vlog -source -lint driver.sv 
+# ** Note: (vlog-2286) driver.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package driver_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:23 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:23 on Jul 08,2026
+# vlog -source -lint monitor.sv 
+# ** Note: (vlog-2286) monitor.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package monitor_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:23 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:23 on Jul 08,2026
+# vlog -source -lint agent.sv 
+# ** Note: (vlog-2286) agent.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package agent_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:24 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:24 on Jul 08,2026
+# vlog -source -lint scoreboard.sv 
+# ** Note: (vlog-2286) scoreboard.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package scoreboard_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:25 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:25 on Jul 08,2026
+# vlog -source -lint coverage.sv 
+# ** Note: (vlog-2286) coverage.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package coverage_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:25 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:25 on Jul 08,2026
+# vlog -source -lint environment.sv 
+# ** Note: (vlog-2286) environment.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package environment_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:26 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:26 on Jul 08,2026
+# vlog -source -lint test.sv 
+# ** Note: (vlog-2286) test.sv(2): Using implicit +incdir+/pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package test_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package load_balancer_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 16:40:27 on Jul 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2021.3_1 Compiler 2021.08 Aug 15 2021
+# Start time: 16:40:27 on Jul 08,2026
+# vopt top -o top_optimized "+acc" "+cover=sbfec+load_balancer(rtl)." 
+# 
+# Top level modules:
+# 	top
+# 
+# Analyzing design...
+# -- Loading module top
+# -- Importing package load_balancer_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Loading package mtiUvm.questa_uvm_pkg
+# -- Loading interface load_balancer_bfm
+# -- Loading module load_balancer
+# -- Loading module load_balancer_sva
+# Optimizing 8 design-units (inlining 0/4 module instances):
+# -- Optimizing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)(fast)
+# -- Optimizing package mtiUvm.questa_uvm_pkg(fast)
+# -- Optimizing package load_balancer_pkg(fast)
+# -- Optimizing module load_balancer_sva(fast)
+# -- Optimizing module load_balancer(fast)
+# -- Optimizing module top(fast)
+# -- Optimizing interface load_balancer_bfm(fast__2)
+# -- Optimizing interface load_balancer_bfm(fast)
+# Optimized design name is top_optimized
+# End time: 16:40:30 on Jul 08,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0
+# vsim top_optimized -coverage 
+# Start time: 16:40:30 on Jul 08,2026
+# //  Questa Sim-64
+# //  Version 2021.3_1 linux_x86_64 Aug 15 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.load_balancer_bfm(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.load_balancer_pkg(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.top(fast)
+# Loading work.load_balancer_bfm(fast__2)
+# Loading work.load_balancer(fast)
+# Loading work.load_balancer_sva(fast)
+# Loading /pkgs/mentor/questa/2021.3_1/questasim/uvm-1.1d/linux_x86_64/uvm_dpi.so
+# 1
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test load_balancer_test...
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               load_balancer_test      -     @471 
+#   env_h                    lb_environment          -     @478 
+#     agent_h                lb_agent                -     @485 
+#       driver_h             lb_driver               -     @635 
+#         rsp_port           uvm_analysis_port       -     @650 
+#         seq_item_port      uvm_seq_item_pull_port  -     @642 
+#       monitor_h            lb_monitor              -     @628 
+#         monitor_port       uvm_analysis_port       -     @660 
+#       sequencer_h          lb_sequencer            -     @519 
+#         rsp_export         uvm_analysis_export     -     @526 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @620 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     coverage_h             lb_coverage             -     @499 
+#       analysis_imp         uvm_analysis_imp        -     @506 
+#     scoreboard_h           lb_scoreboard           -     @492 
+#       scoreboard_port      uvm_analysis_imp_port   -     @673 
+# --------------------------------------------------------------
+# 
+# UVM_INFO sequence.sv(62) @ 0: uvm_test_top.env_h.agent_h.sequencer_h@@rr_seq [LB_RR_SEQ] Starting round-robin sequence
+# TEST lb_rr_test: cycles=4007 mismatched=0
+# UVM_INFO sequence.sv(71) @ 40110: uvm_test_top.env_h.agent_h.sequencer_h@@wrr_seq [LB_WRR_SEQ] Starting weighted round-robin sequence
+# TEST lb_wrr_test: cycles=4007 mismatched=0
+# UVM_INFO sequence.sv(80) @ 80180: uvm_test_top.env_h.agent_h.sequencer_h@@ll_seq [LB_LL_SEQ] Starting least-loaded sequence
+# TEST lb_ll_test: cycles=4007 mismatched=0
+# UVM_INFO sequence.sv(90) @ 120250: uvm_test_top.env_h.agent_h.sequencer_h@@mixed_seq [LB_MIXED_SEQ] Starting mixed-policy random sequence
+# TEST lb_mixed_random_test: cycles=4007 mismatched=0
+# UVM_INFO sequence.sv(105) @ 160320: uvm_test_top.env_h.agent_h.sequencer_h@@bp_seq [LB_BP_SEQ] Starting backpressure-stress sequence
+# TEST lb_backpressure_test: cycles=4023 mismatched=0
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 200550: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO scoreboard.sv(164) @ 200550: uvm_test_top.env_h.scoreboard_h [SCOREBOARD] checked 20052 cycles, 7853 dispatches
+# UVM_INFO scoreboard.sv(166) @ 200550: uvm_test_top.env_h.scoreboard_h [SCOREBOARD] backend 0 granted 2872 times
+# UVM_INFO scoreboard.sv(166) @ 200550: uvm_test_top.env_h.scoreboard_h [SCOREBOARD] backend 1 granted 2190 times
+# UVM_INFO scoreboard.sv(166) @ 200550: uvm_test_top.env_h.scoreboard_h [SCOREBOARD] backend 2 granted 1565 times
+# UVM_INFO scoreboard.sv(166) @ 200550: uvm_test_top.env_h.scoreboard_h [SCOREBOARD] backend 3 granted 1226 times
+# No errors -- passed testbench
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   15
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [LB_BP_SEQ]     1
+# [LB_LL_SEQ]     1
+# [LB_MIXED_SEQ]     1
+# [LB_RR_SEQ]     1
+# [LB_WRR_SEQ]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# [SCOREBOARD]     5
+# [TEST_DONE]     1
+# [UVMTOP]     1
+# ** Note: $finish    : /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 200550 ns  Iteration: 55  Instance: /top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# Stopped at /pkgs/mentor/questa/2021.3_1/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:40:33 on Jul 08,2026
+# vcover report load_balancer.ucdb 
+# Coverage Report Summary Data by instance
+# 
+# =================================================================================
+# === Instance: /top/DUT/sva_inst
+# === Design Unit: work.load_balancer_sva
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Assertions                      18        18         0   100.00%
+#     Directives                       3         3         0   100.00%
+#     Statements                       3         3         0   100.00%
+# 
+# =================================================================================
+# === Instance: /top/DUT
+# === Design Unit: work.load_balancer
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Branches                        33        33         0   100.00%
+#     Conditions                      16        16         0   100.00%
+#     Expressions                      5         5         0   100.00%
+#     Statements                      63        63         0   100.00%
+# 
+# =================================================================================
+# === Instance: /load_balancer_pkg
+# === Design Unit: work.load_balancer_pkg
+# =================================================================================
+#     Enabled Coverage              Bins      Hits    Misses  Coverage
+#     ----------------              ----      ----    ------  --------
+#     Assertions                       2         2         0   100.00%
+#     Covergroups                      2        na        na   100.00%
+#         Coverpoints/Crosses          7        na        na        na
+#             Covergroup Bins         43        43         0   100.00%
+# 
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 2
+# 
+# TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 3
+# 
+# TOTAL ASSERTION COVERAGE: 100.00%  ASSERTIONS: 20
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 16:40:33 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcover 2021.3_1 Coverage Utility 2021.08 Aug 15 2021
+# Start time: 16:40:33 on Jul 08,2026
+# vcover report load_balancer.ucdb -cvg -details 
+# Coverage Report by instance with details
+# 
+# =================================================================================
+# === Instance: /load_balancer_pkg
+# === Design Unit: work.load_balancer_pkg
+# =================================================================================
+# 
+# Covergroup Coverage:
+#     Covergroups                      2        na        na   100.00%
+#         Coverpoints/Crosses          7        na        na        na
+#             Covergroup Bins         43        43         0   100.00%
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /load_balancer_pkg/lb_coverage/policy_ready_cg 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint policy_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin rr                                           9167          1          -    Covered              
+#         bin wrr                                          5479          1          -    Covered              
+#         bin ll                                           5406          1          -    Covered              
+#     Coverpoint ready_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin none                                         4372          1          -    Covered              
+#         bin one_hot[1]                                   1086          1          -    Covered              
+#         bin one_hot[2]                                   1067          1          -    Covered              
+#         bin one_hot[4]                                   1023          1          -    Covered              
+#         bin one_hot[8]                                    996          1          -    Covered              
+#         bin some                                        12501          1          -    Covered              
+#         bin all                                          1026          1          -    Covered              
+#     Coverpoint occ_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin no_dispatch                                 12199          1          -    Covered              
+#         bin fresh                                        7149          1          -    Covered              
+#         bin low                                           695          1          -    Covered              
+#         bin high                                            5          1          -    Covered              
+#         bin saturated                                       4          1          -    Covered              
+#     Cross policy_x_ready                              100.00%        100          -    Covered              
+#         covered/total bins:                                21         21          -                      
+#         missing/total bins:                                 0         21          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <ll,all>                                  296          1          -    Covered              
+#             bin <wrr,all>                                 357          1          -    Covered              
+#             bin <rr,all>                                  373          1          -    Covered              
+#             bin <ll,some>                                3868          1          -    Covered              
+#             bin <wrr,some>                               3907          1          -    Covered              
+#             bin <rr,some>                                4726          1          -    Covered              
+#             bin <ll,one_hot[8]>                           310          1          -    Covered              
+#             bin <ll,one_hot[4]>                           303          1          -    Covered              
+#             bin <ll,one_hot[2]>                           338          1          -    Covered              
+#             bin <ll,one_hot[1]>                           337          1          -    Covered              
+#             bin <wrr,one_hot[8]>                          328          1          -    Covered              
+#             bin <wrr,one_hot[4]>                          317          1          -    Covered              
+#             bin <wrr,one_hot[2]>                          315          1          -    Covered              
+#             bin <wrr,one_hot[1]>                          320          1          -    Covered              
+#             bin <rr,one_hot[8]>                           358          1          -    Covered              
+#             bin <rr,one_hot[4]>                           403          1          -    Covered              
+#             bin <rr,one_hot[2]>                           414          1          -    Covered              
+#             bin <rr,one_hot[1]>                           429          1          -    Covered              
+#             bin <ll,none>                                 567          1          -    Covered              
+#             bin <wrr,none>                                580          1          -    Covered              
+#             bin <rr,none>                                3225          1          -    Covered              
+#  Covergroup instance \/load_balancer_pkg::lb_coverage::policy_ready_cg  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint policy_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin rr                                           9167          1          -    Covered              
+#         bin wrr                                          5479          1          -    Covered              
+#         bin ll                                           5406          1          -    Covered              
+#     Coverpoint ready_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin none                                         4372          1          -    Covered              
+#         bin one_hot[1]                                   1086          1          -    Covered              
+#         bin one_hot[2]                                   1067          1          -    Covered              
+#         bin one_hot[4]                                   1023          1          -    Covered              
+#         bin one_hot[8]                                    996          1          -    Covered              
+#         bin some                                        12501          1          -    Covered              
+#         bin all                                          1026          1          -    Covered              
+#     Coverpoint occ_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin no_dispatch                                 12199          1          -    Covered              
+#         bin fresh                                        7149          1          -    Covered              
+#         bin low                                           695          1          -    Covered              
+#         bin high                                            5          1          -    Covered              
+#         bin saturated                                       4          1          -    Covered              
+#     Cross policy_x_ready                              100.00%        100          -    Covered              
+#         covered/total bins:                                21         21          -                      
+#         missing/total bins:                                 0         21          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <ll,all>                                  296          1          -    Covered              
+#             bin <wrr,all>                                 357          1          -    Covered              
+#             bin <rr,all>                                  373          1          -    Covered              
+#             bin <ll,some>                                3868          1          -    Covered              
+#             bin <wrr,some>                               3907          1          -    Covered              
+#             bin <rr,some>                                4726          1          -    Covered              
+#             bin <ll,one_hot[8]>                           310          1          -    Covered              
+#             bin <ll,one_hot[4]>                           303          1          -    Covered              
+#             bin <ll,one_hot[2]>                           338          1          -    Covered              
+#             bin <ll,one_hot[1]>                           337          1          -    Covered              
+#             bin <wrr,one_hot[8]>                          328          1          -    Covered              
+#             bin <wrr,one_hot[4]>                          317          1          -    Covered              
+#             bin <wrr,one_hot[2]>                          315          1          -    Covered              
+#             bin <wrr,one_hot[1]>                          320          1          -    Covered              
+#             bin <rr,one_hot[8]>                           358          1          -    Covered              
+#             bin <rr,one_hot[4]>                           403          1          -    Covered              
+#             bin <rr,one_hot[2]>                           414          1          -    Covered              
+#             bin <rr,one_hot[1]>                           429          1          -    Covered              
+#             bin <ll,none>                                 567          1          -    Covered              
+#             bin <wrr,none>                                580          1          -    Covered              
+#             bin <rr,none>                                3225          1          -    Covered              
+#  TYPE /load_balancer_pkg/lb_coverage/handshake_cg     100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint req_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         ignore_bin impossible                            7750                     -    Occurred             
+#         bin accept                                       7853          1          -    Covered              
+#         bin stall                                        3445          1          -    Covered              
+#         bin idle                                         1004          1          -    Covered              
+#     Coverpoint drain_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin draining                                    18778          1          -    Covered              
+#         bin quiet                                        1274          1          -    Covered              
+#     Coverpoint bp_cp                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin backpressure                                 4372          1          -    Covered              
+#         bin open                                        15680          1          -    Covered              
+#  Covergroup instance \/load_balancer_pkg::lb_coverage::handshake_cg  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint req_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         ignore_bin impossible                            7750                     -    Occurred             
+#         bin accept                                       7853          1          -    Covered              
+#         bin stall                                        3445          1          -    Covered              
+#         bin idle                                         1004          1          -    Covered              
+#     Coverpoint drain_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin draining                                    18778          1          -    Covered              
+#         bin quiet                                        1274          1          -    Covered              
+#     Coverpoint bp_cp                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin backpressure                                 4372          1          -    Covered              
+#         bin open                                        15680          1          -    Covered              
+# 
+# COVERGROUP COVERAGE:
+# ----------------------------------------------------------------------------------------------------------
+# Covergroup                                             Metric       Goal       Bins    Status               
+#                                                                                                          
+# ----------------------------------------------------------------------------------------------------------
+#  TYPE /load_balancer_pkg/lb_coverage/policy_ready_cg 
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint policy_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin rr                                           9167          1          -    Covered              
+#         bin wrr                                          5479          1          -    Covered              
+#         bin ll                                           5406          1          -    Covered              
+#     Coverpoint ready_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin none                                         4372          1          -    Covered              
+#         bin one_hot[1]                                   1086          1          -    Covered              
+#         bin one_hot[2]                                   1067          1          -    Covered              
+#         bin one_hot[4]                                   1023          1          -    Covered              
+#         bin one_hot[8]                                    996          1          -    Covered              
+#         bin some                                        12501          1          -    Covered              
+#         bin all                                          1026          1          -    Covered              
+#     Coverpoint occ_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin no_dispatch                                 12199          1          -    Covered              
+#         bin fresh                                        7149          1          -    Covered              
+#         bin low                                           695          1          -    Covered              
+#         bin high                                            5          1          -    Covered              
+#         bin saturated                                       4          1          -    Covered              
+#     Cross policy_x_ready                              100.00%        100          -    Covered              
+#         covered/total bins:                                21         21          -                      
+#         missing/total bins:                                 0         21          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <ll,all>                                  296          1          -    Covered              
+#             bin <wrr,all>                                 357          1          -    Covered              
+#             bin <rr,all>                                  373          1          -    Covered              
+#             bin <ll,some>                                3868          1          -    Covered              
+#             bin <wrr,some>                               3907          1          -    Covered              
+#             bin <rr,some>                                4726          1          -    Covered              
+#             bin <ll,one_hot[8]>                           310          1          -    Covered              
+#             bin <ll,one_hot[4]>                           303          1          -    Covered              
+#             bin <ll,one_hot[2]>                           338          1          -    Covered              
+#             bin <ll,one_hot[1]>                           337          1          -    Covered              
+#             bin <wrr,one_hot[8]>                          328          1          -    Covered              
+#             bin <wrr,one_hot[4]>                          317          1          -    Covered              
+#             bin <wrr,one_hot[2]>                          315          1          -    Covered              
+#             bin <wrr,one_hot[1]>                          320          1          -    Covered              
+#             bin <rr,one_hot[8]>                           358          1          -    Covered              
+#             bin <rr,one_hot[4]>                           403          1          -    Covered              
+#             bin <rr,one_hot[2]>                           414          1          -    Covered              
+#             bin <rr,one_hot[1]>                           429          1          -    Covered              
+#             bin <ll,none>                                 567          1          -    Covered              
+#             bin <wrr,none>                                580          1          -    Covered              
+#             bin <rr,none>                                3225          1          -    Covered              
+#  Covergroup instance \/load_balancer_pkg::lb_coverage::policy_ready_cg  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                    36         36          -                      
+#     missing/total bins:                                     0         36          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint policy_cp                              100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin rr                                           9167          1          -    Covered              
+#         bin wrr                                          5479          1          -    Covered              
+#         bin ll                                           5406          1          -    Covered              
+#     Coverpoint ready_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 7          7          -                      
+#         missing/total bins:                                 0          7          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin none                                         4372          1          -    Covered              
+#         bin one_hot[1]                                   1086          1          -    Covered              
+#         bin one_hot[2]                                   1067          1          -    Covered              
+#         bin one_hot[4]                                   1023          1          -    Covered              
+#         bin one_hot[8]                                    996          1          -    Covered              
+#         bin some                                        12501          1          -    Covered              
+#         bin all                                          1026          1          -    Covered              
+#     Coverpoint occ_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 5          5          -                      
+#         missing/total bins:                                 0          5          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin no_dispatch                                 12199          1          -    Covered              
+#         bin fresh                                        7149          1          -    Covered              
+#         bin low                                           695          1          -    Covered              
+#         bin high                                            5          1          -    Covered              
+#         bin saturated                                       4          1          -    Covered              
+#     Cross policy_x_ready                              100.00%        100          -    Covered              
+#         covered/total bins:                                21         21          -                      
+#         missing/total bins:                                 0         21          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         Auto, Default and User Defined Bins:
+#             bin <ll,all>                                  296          1          -    Covered              
+#             bin <wrr,all>                                 357          1          -    Covered              
+#             bin <rr,all>                                  373          1          -    Covered              
+#             bin <ll,some>                                3868          1          -    Covered              
+#             bin <wrr,some>                               3907          1          -    Covered              
+#             bin <rr,some>                                4726          1          -    Covered              
+#             bin <ll,one_hot[8]>                           310          1          -    Covered              
+#             bin <ll,one_hot[4]>                           303          1          -    Covered              
+#             bin <ll,one_hot[2]>                           338          1          -    Covered              
+#             bin <ll,one_hot[1]>                           337          1          -    Covered              
+#             bin <wrr,one_hot[8]>                          328          1          -    Covered              
+#             bin <wrr,one_hot[4]>                          317          1          -    Covered              
+#             bin <wrr,one_hot[2]>                          315          1          -    Covered              
+#             bin <wrr,one_hot[1]>                          320          1          -    Covered              
+#             bin <rr,one_hot[8]>                           358          1          -    Covered              
+#             bin <rr,one_hot[4]>                           403          1          -    Covered              
+#             bin <rr,one_hot[2]>                           414          1          -    Covered              
+#             bin <rr,one_hot[1]>                           429          1          -    Covered              
+#             bin <ll,none>                                 567          1          -    Covered              
+#             bin <wrr,none>                                580          1          -    Covered              
+#             bin <rr,none>                                3225          1          -    Covered              
+#  TYPE /load_balancer_pkg/lb_coverage/handshake_cg     100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint req_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         ignore_bin impossible                            7750                     -    Occurred             
+#         bin accept                                       7853          1          -    Covered              
+#         bin stall                                        3445          1          -    Covered              
+#         bin idle                                         1004          1          -    Covered              
+#     Coverpoint drain_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin draining                                    18778          1          -    Covered              
+#         bin quiet                                        1274          1          -    Covered              
+#     Coverpoint bp_cp                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin backpressure                                 4372          1          -    Covered              
+#         bin open                                        15680          1          -    Covered              
+#  Covergroup instance \/load_balancer_pkg::lb_coverage::handshake_cg  
+#                                                       100.00%        100          -    Covered              
+#     covered/total bins:                                     7          7          -                      
+#     missing/total bins:                                     0          7          -                      
+#     % Hit:                                            100.00%        100          -                      
+#     Coverpoint req_cp                                 100.00%        100          -    Covered              
+#         covered/total bins:                                 3          3          -                      
+#         missing/total bins:                                 0          3          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         ignore_bin impossible                            7750                     -    Occurred             
+#         bin accept                                       7853          1          -    Covered              
+#         bin stall                                        3445          1          -    Covered              
+#         bin idle                                         1004          1          -    Covered              
+#     Coverpoint drain_cp                               100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin draining                                    18778          1          -    Covered              
+#         bin quiet                                        1274          1          -    Covered              
+#     Coverpoint bp_cp                                  100.00%        100          -    Covered              
+#         covered/total bins:                                 2          2          -                      
+#         missing/total bins:                                 0          2          -                      
+#         % Hit:                                        100.00%        100          -                      
+#         bin backpressure                                 4372          1          -    Covered              
+#         bin open                                        15680          1          -    Covered              
+# 
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 2
+# 
+# Total Coverage By Instance (filtered view): 100.00%
+# 
+# End time: 16:40:33 on Jul 08,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+No errors -- passed testbench
+#  quit -f
+# End time: 16:40:33 on Jul 08,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

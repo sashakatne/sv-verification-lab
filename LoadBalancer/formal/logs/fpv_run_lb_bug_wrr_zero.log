@@ -1,0 +1,48 @@
+               Version V-2023.12-SP2-3 for linux64 - Oct 12, 2024
+expected_falsified_property: a_wrr_weight0_never
+----- assertion status -----
+# property to be FALSIFIED - proving the assertion actually catches the fault.
+[Info] PROP_I_RESULT: load_balancer.sva_inst.c_accept  covered    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_wrr[2].a_wrr_weight0_never  falsified    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.c_ll_tie  covered:1    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.c_backpressure  covered:10    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_wrr[3].a_wrr_weight0_never  falsified    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_wrr[1].a_wrr_weight0_never  falsified    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_wrr[0].a_wrr_weight0_never  falsified:7    00:00:01
+[Info] PROP_I_RESULT: load_balancer.sva_inst.a_grant_onehot  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.a_grant_only_ready  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.a_no_drop  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.a_no_phantom  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_ll[0].a_ll_picks_min  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_ll[1].a_ll_picks_min  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_ll[2].a_ll_picks_min  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_ll[3].a_ll_picks_min  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.a_rr_bounded_fairness  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_occ[0].a_occ_no_overflow  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_occ[1].a_occ_no_overflow  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_occ[2].a_occ_no_overflow  proven    00:00:02
+[Info] PROP_I_RESULT: load_balancer.sva_inst.g_occ[3].a_occ_no_overflow  proven    00:00:02
+     - # proven       : 13
+     - # falsified    : 4
+     - # covered      : 3
+     [   0] proven                                  -  load_balancer.sva_inst.a_grant_onehot
+     [   1] proven                                  -  load_balancer.sva_inst.a_grant_only_ready
+     [   2] proven                   (non_vacuous)  -  load_balancer.sva_inst.a_no_drop
+     [   3] proven                   (non_vacuous)  -  load_balancer.sva_inst.a_no_phantom
+     [   4] proven                   (non_vacuous)  -  load_balancer.sva_inst.a_rr_bounded_fairness
+     [   8] proven                   (non_vacuous)  -  load_balancer.sva_inst.g_ll[0].a_ll_picks_min
+     [   9] proven                   (non_vacuous)  -  load_balancer.sva_inst.g_ll[1].a_ll_picks_min
+     [  10] proven                   (non_vacuous)  -  load_balancer.sva_inst.g_ll[2].a_ll_picks_min
+     [  11] proven                   (non_vacuous)  -  load_balancer.sva_inst.g_ll[3].a_ll_picks_min
+     [  12] proven                                  -  load_balancer.sva_inst.g_occ[0].a_occ_no_overflow
+     [  13] proven                                  -  load_balancer.sva_inst.g_occ[1].a_occ_no_overflow
+     [  14] proven                                  -  load_balancer.sva_inst.g_occ[2].a_occ_no_overflow
+     [  15] proven                                  -  load_balancer.sva_inst.g_occ[3].a_occ_no_overflow
+     [  16] falsified   (depth=7)    (non_vacuous)  -  load_balancer.sva_inst.g_wrr[0].a_wrr_weight0_never
+     [  17] falsified   (depth=0)    (non_vacuous)  -  load_balancer.sva_inst.g_wrr[1].a_wrr_weight0_never
+     [  18] falsified   (depth=0)    (non_vacuous)  -  load_balancer.sva_inst.g_wrr[2].a_wrr_weight0_never
+     [  19] falsified   (depth=0)    (non_vacuous)  -  load_balancer.sva_inst.g_wrr[3].a_wrr_weight0_never
+     [   5] covered     (depth=0)                   -  load_balancer.sva_inst.c_accept
+     [   6] covered     (depth=10)                  -  load_balancer.sva_inst.c_backpressure
+     [   7] covered     (depth=1)                   -  load_balancer.sva_inst.c_ll_tie
+EVIDENCE_VERDICT: job=fpv_run_lb_bug_wrr_zero kind=bug proven=26 falsified=8 covered=6

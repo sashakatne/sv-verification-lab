@@ -1,0 +1,156 @@
+// SVA checker for load_balancer, bound onto the DUT (never instantiated inline).
+// Port names match DUT signals so `bind load_balancer load_balancer_sva u(.*)`
+// wires every port - including the DUT-internal grant / accept / elig / occ /
+// credit_eff - by name. The same module is consumed by Questa (sim assertions,
+// see top.sv) and by VC Formal (see formal/bind_load_balancer_sva.sva).
+//
+// All properties are steady-state, so each disables during reset uniformly.
+// p_rr_bounded_fairness reformulates the round-robin liveness claim ("an
+// eligible backend is eventually served") as bounded safety, which VC Formal
+// proves without a raw s_eventually.
+module load_balancer_sva #(
+    parameter int N            = 4,
+    parameter int WEIGHT_WIDTH = 4,
+    parameter int OCC_WIDTH    = 4
+) (
+    input logic                      clk,
+    input logic                      rst_n,
+    input logic [1:0]                policy,
+    input logic [N*WEIGHT_WIDTH-1:0] weight,
+    input logic                      req_valid,
+    input logic                      req_ready,
+    input logic [N-1:0]              be_ready,
+    input logic [N-1:0]              be_valid,
+    input logic [N-1:0]              be_done,
+    input logic [N*OCC_WIDTH-1:0]    occ_flat,
+    // DUT-internal signals (connected by name via .*)
+    input logic [N-1:0]                elig,
+    input logic [N-1:0]                grant,
+    input logic                        accept,
+    input logic [$clog2(N)-1:0]        rr_ptr,
+    input logic [$clog2(N)-1:0]        grant_idx
+);
+
+    localparam logic [1:0] POLICY_RR  = 2'b00;
+    localparam logic [1:0] POLICY_WRR = 2'b01;
+    localparam logic [1:0] POLICY_LL  = 2'b10;
+    localparam int MAX_OUTSTANDING = 12;
+
+    // Sample at negedge. The driver updates DUT inputs at posedge (NBA), so the
+    // combinational grant settles during the cycle; sampling at negedge captures
+    // a coherent snapshot where inputs, the combinational grant, and the
+    // registered occupancy are all stable - the same point the UVM monitor uses.
+    // A posedge-clocked assertion instead straddles the input update and reads an
+    // inconsistent grant-vs-occ pair. VC Formal samples negedge just as validly.
+    default clocking cb @(negedge clk); endclocking
+    // Disable when not out-of-reset. Using (rst_n !== 1'b1) rather than (!rst_n)
+    // also suppresses the t=0 evaluation where rst_n is still X (!X is X, which
+    // SVA would treat as "not disabled" and fire against X operands). VC Formal
+    // drives reset via create_reset, so this only affects the simulation path.
+    default disable iff (rst_n !== 1'b1);
+
+    // Input assumption: the config port only ever carries one of the three
+    // defined policy encodings; 2'b11 is reserved and never driven. In formal
+    // this constrains the proof to the legal input space (without it, VC Formal
+    // legitimately falsifies a_no_drop / a_rr_bounded_fairness on policy==2'b11,
+    // whose case-default drops the grant). In simulation the UVM driver only
+    // drives RR/WRR/LL, so the assume is always satisfied and never fires.
+    m_policy_legal : assume property (policy inside {POLICY_RR, POLICY_WRR, POLICY_LL});
+
+    // helper: per-backend occupancy slice
+    function automatic logic [OCC_WIDTH-1:0] occ_i(int i);
+        return occ_flat[i*OCC_WIDTH +: OCC_WIDTH];
+    endfunction
+    function automatic logic [WEIGHT_WIDTH-1:0] weight_i(int i);
+        return weight[i*WEIGHT_WIDTH +: WEIGHT_WIDTH];
+    endfunction
+
+    // ---- safety properties ----
+
+    // 1. at most one backend granted per cycle
+    property p_grant_onehot;
+        $onehot0(grant);
+    endproperty
+    a_grant_onehot : assert property (p_grant_onehot);
+
+    // 2. a granted backend must be ready (never grant under backpressure)
+    property p_grant_only_ready;
+        (grant & ~be_ready) == '0;
+    endproperty
+    a_grant_only_ready : assert property (p_grant_only_ready);
+
+    // 3. no drop: a live request with an eligible backend must dispatch exactly one
+    property p_no_drop;
+        (req_valid && (elig != '0)) |-> ($countones(be_valid) == 1);
+    endproperty
+    a_no_drop : assert property (p_no_drop);
+
+    // 3b. no phantom dispatch: no dispatch without an accepted request
+    property p_no_phantom;
+        (be_valid != '0) |-> (req_valid && req_ready);
+    endproperty
+    a_no_phantom : assert property (p_no_phantom);
+
+    // 4. occupancy bounds (checks the saturation clamp; falsified by BUG_OCC_OVERFLOW)
+    genvar gi;
+    generate
+        for (gi = 0; gi < N; gi++) begin : g_occ
+            property p_occ_no_overflow;
+                occ_i(gi) <= OCC_WIDTH'(MAX_OUTSTANDING);
+            endproperty
+            a_occ_no_overflow : assert property (p_occ_no_overflow);
+        end
+    endgenerate
+
+    // 5. WRR: a weight-0 backend is never granted
+    generate
+        for (gi = 0; gi < N; gi++) begin : g_wrr
+            property p_wrr_weight0_never;
+                (policy == POLICY_WRR) |-> !(grant[gi] && (weight_i(gi) == '0));
+            endproperty
+            a_wrr_weight0_never : assert property (p_wrr_weight0_never);
+        end
+    endgenerate
+
+    // 6. LL: the granted backend has minimum occupancy among ready backends
+    generate
+        for (gi = 0; gi < N; gi++) begin : g_ll
+            property p_ll_picks_min;
+                (policy == POLICY_LL && grant[gi]) |->
+                    // no other ready backend has strictly lower occupancy
+                    !( (be_ready[0] && (0 != gi) && (occ_i(0) < occ_i(gi))) ||
+                       (be_ready[1] && (1 != gi) && (occ_i(1) < occ_i(gi))) ||
+                       (be_ready[2] && (2 != gi) && (occ_i(2) < occ_i(gi))) ||
+                       (be_ready[3] && (3 != gi) && (occ_i(3) < occ_i(gi))) );
+            endproperty
+            a_ll_picks_min : assert property (p_ll_picks_min);
+        end
+    endgenerate
+
+    // 7. RR fairness as a mechanism invariant (liveness reduced to bounded
+    // safety): a round-robin accept advances the pointer to grant_idx+1. This
+    // one-step property implies no-starvation by construction - a continuously
+    // ready backend is reached within N accepts because the pointer sweeps every
+    // slot - with none of the vacuity risk of a raw s_eventually liveness proof.
+    // Falsified by BUG_RR_STUCK (frozen pointer).
+    //
+    // Clocked on POSEDGE (overriding the module's negedge default): this is the
+    // one property about a posedge-registered relationship - rr_ptr and the
+    // grant_idx that produced it. Sampling both at posedge keeps $past(grant_idx)
+    // and rr_ptr a consistent registered pair (a negedge sample would compare a
+    // combinational grant_idx against a posedge-registered rr_ptr from different
+    // half-cycles). The $past(rst_n) qualifier avoids referencing $past across the
+    // reset boundary.
+    property p_rr_bounded_fairness;
+        @(posedge clk) disable iff (rst_n !== 1'b1)
+        ($past(rst_n) && policy == POLICY_RR && accept)
+        |=> (rr_ptr == $past(grant_idx) + 1'b1);
+    endproperty
+    a_rr_bounded_fairness : assert property (p_rr_bounded_fairness);
+
+    // ---- cover properties (witnesses that the proof is non-vacuous) ----
+    c_accept          : cover property (req_valid && req_ready);
+    c_backpressure    : cover property (req_valid && !req_ready && (be_ready == '0));
+    c_ll_tie          : cover property (policy == POLICY_LL && $countones(be_ready) >= 2);
+
+endmodule : load_balancer_sva

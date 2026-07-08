@@ -1,0 +1,15 @@
+# QuestaSim-64 vlog 2021.3_1 Compiler 2021.08 Aug 15 2021
+----- per-test results -----
+TEST lb_rr_test: cycles=4007 mismatched=0
+TEST lb_wrr_test: cycles=4007 mismatched=0
+TEST lb_ll_test: cycles=4007 mismatched=0
+TEST lb_mixed_random_test: cycles=4007 mismatched=0
+TEST lb_backpressure_test: cycles=4023 mismatched=0
+----- coverage -----
+# Total Coverage By Instance (filtered view): 100.00%
+#  TYPE /load_balancer_pkg/lb_coverage/handshake_cg     100.00%        100          -    Covered              
+#  TYPE /load_balancer_pkg/lb_coverage/handshake_cg     100.00%        100          -    Covered              
+# TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 2
+# Total Coverage By Instance (filtered view): 100.00%
+----- verdict -----
+No errors -- passed testbench
