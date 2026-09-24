@@ -17,7 +17,7 @@ with a bug-injection traceability matrix on both sides.
 | Final verdict | `No errors -- passed testbench` |
 | Negative run | `BUG_LL_NOTMIN` yields 1146 LL scoreboard mismatches and `Failed testbench` (RR/WRR stay clean, localizing the fault) |
 | Clean formal proof | 17 assertions proven (all non-vacuous), 3 covers reached, 0 falsified |
-| Formal bug matrix | 6/6 `BUG_*` mutations each falsify their mapped property |
+| Formal bug matrix | 6/6 `BUG_*` mutations each falsify their mapped property; 4 falsify only that property, 2 (`BUG_DOUBLE_GRANT`, `BUG_GRANT_NOTREADY`) also falsify related properties |
 | Evidence gate | `check_evidence.sh` -> `OK (7 formal tails, 5 UVM tests clean, coverage 100.00%)` |
 | Artifacts | `MANIFEST.txt`, `transcript.txt`, `transcript_negative.txt`, `waveforms.png`, `block_diagram.png`, `waveform_samples.csv`, `formal/logs/*.log` |
 
@@ -59,8 +59,9 @@ defined policy encodings.
 ## Bug-Injection Traceability
 
 Each `BUG_*` define (in `load_balancer.sv`, guarded by `` `ifdef ``) mutates the
-design to violate exactly one property. Formal falsifies the mapped property;
-the UVM scoreboard also catches the sim-visible ones.
+design to violate one targeted property. Formal falsifies the mapped property;
+`BUG_DOUBLE_GRANT` and `BUG_GRANT_NOTREADY` also falsify related properties
+(see `formal/logs/`). The UVM scoreboard catches `BUG_LL_NOTMIN` in simulation.
 
 | Define | Mutation | Falsifies |
 | --- | --- | --- |
